@@ -1,0 +1,690 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mi Crédito S.C.</title>
+<meta name="description" content="Mi Crédito S.C. — créditos, ahorro y depósitos a plazo en Ciudad El Triunfo, Usulután Norte. Atención personalizada y respuesta rápida.">
+<link rel="canonical" href="https://micreditosc.com.sv/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://micreditosc.com.sv/">
+<meta property="og:title" content="Mi Crédito S.C. | Créditos y ahorro en Ciudad El Triunfo">
+<meta property="og:description" content="Créditos, ahorro y depósitos a plazo en Ciudad El Triunfo, Usulután Norte. Atención personalizada y respuesta rápida.">
+<meta property="og:image" content="https://micreditosc.com.sv/img/hero-ganadero.jpg">
+<meta property="og:locale" content="es_SV">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Albert+Sans:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: photo-led single page. Black type panels beside full-bleed photos of Salvadoran people; light green carries every action. */
+:root{
+  color-scheme: light;
+  --ink:#0d140f;          /* negro de marca */
+  --ink-2:#1b261d;
+  --paper:#ffffff;        /* blanco */
+  --mist:#f2f8ec;         /* blanco verdoso para bandas */
+  --leaf:#9ad95b;         /* verde claro de marca */
+  --leaf-soft:#dff2c9;
+  --leaf-deep:#2f6a1c;    /* verde legible sobre blanco */
+  --muted:#4d5a4f;
+  --line:#dbe5d3;
+  --display:"Bricolage Grotesque", "Arial Narrow", Arial, sans-serif;
+  --body:"Albert Sans", "Segoe UI", Helvetica, Arial, sans-serif;
+  --wrap:1180px;
+  --gutter:clamp(16px,4vw,40px);
+  --r:14px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+body{background:var(--paper);color:var(--ink);font:400 17px/1.6 var(--body);margin:0;-webkit-font-smoothing:antialiased}
+img{max-width:100%;height:auto;display:block}
+[hidden]{display:none!important}
+a{color:inherit}
+h1,h2,h3{font-family:var(--display);line-height:1.05;margin:0;text-wrap:balance;letter-spacing:-.02em}
+p{margin:0}
+.wrap{max-width:var(--wrap);margin-inline:auto;padding-inline:var(--gutter)}
+.eyebrow{font:700 12.5px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--leaf-deep)}
+.on-dark .eyebrow,.eyebrow.on-dark{color:var(--leaf)}
+:focus-visible{outline:3px solid var(--leaf);outline-offset:3px;border-radius:6px}
+
+/* Botones */
+.btn{display:inline-flex;align-items:center;gap:10px;font:600 16px/1 var(--body);padding:15px 22px;border-radius:999px;text-decoration:none;border:2px solid transparent;cursor:pointer;transition:transform .15s ease, background .15s ease}
+.btn:hover{transform:translateY(-1px)}
+.btn-leaf{background:var(--leaf);color:var(--ink)}
+.btn-leaf:hover{background:#aee374}
+.btn-ghost{border-color:currentColor;color:inherit;background:transparent}
+.btn svg{width:20px;height:20px;flex:none}
+
+/* Barra superior */
+.topbar{background:var(--ink);color:#cfd8cc;font-size:14px}
+.topbar .wrap{display:flex;flex-wrap:wrap;gap:6px 24px;justify-content:space-between;padding-block:9px}
+.topbar a{text-decoration:none;color:#fff}
+.topbar span b{color:var(--leaf);font-weight:600}
+
+/* Encabezado */
+header.site{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(255,255,255,.96);backdrop-filter:saturate(1.4) blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;padding-block:14px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.mark{width:44px;height:44px;border-radius:12px;background:var(--ink);display:grid;place-items:center;flex:none}
+.mark svg{width:28px;height:28px}
+.brand-name{font:800 22px/1 var(--display);letter-spacing:-.02em}
+.brand-name small{display:block;font:600 11px/1.3 var(--body);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:3px}
+nav.main ul{display:flex;gap:4px;list-style:none;margin:0;padding:0;align-items:center}
+nav.main a{display:block;text-decoration:none;font-weight:600;font-size:15.5px;padding:10px 14px;border-radius:999px}
+nav.main a:hover{background:var(--mist)}
+nav.main a.cta{background:var(--ink);color:#fff;margin-left:6px}
+nav.main a.cta:hover{background:var(--ink-2)}
+.menu-btn{display:none;background:none;border:1.5px solid var(--line);border-radius:10px;padding:9px 12px;font:600 15px var(--body);color:var(--ink);cursor:pointer}
+@media (max-width:900px){
+  .menu-btn{display:block}
+  nav.main{position:absolute;left:0;right:0;top:100%;background:var(--paper);border-bottom:1px solid var(--line);padding:10px var(--gutter) 18px}
+  nav.main ul{flex-direction:column;align-items:stretch}
+  nav.main a.cta{margin:8px 0 0;text-align:center}
+}
+
+/* Héroe */
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);background:var(--ink);color:#fff}
+.hero-copy{padding:clamp(40px,7vw,96px) var(--gutter) clamp(40px,6vw,80px);display:flex;flex-direction:column;justify-content:center;gap:24px;max-width:640px;margin-left:auto;width:100%}
+.hero h1{font-size:clamp(40px,5.6vw,74px);font-weight:800}
+.hero h1 em{font-style:normal;color:var(--leaf)}
+.hero .lead{font-size:clamp(17px,1.5vw,20px);color:#d6ded3;max-width:34em}
+.hero .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:4px}
+.hero .actions .btn-ghost{color:#fff}
+.hero-photo{position:relative;min-height:420px}
+.hero-photo img{position:absolute;inset:0;width:100%;height:100%!important;object-fit:cover;object-position:30% 30%}
+.hero-photo figcaption{position:absolute;left:16px;bottom:16px;background:rgba(13,20,15,.78);color:#fff;font-size:13px;padding:7px 12px;border-radius:999px}
+@media (max-width:900px){
+  .hero{grid-template-columns:1fr}
+  .hero-photo{order:-1;min-height:0;aspect-ratio:4/3;max-width:100%}
+  .hero-copy{max-width:none;margin:0}
+}
+
+/* Franja de diferenciadores */
+.pillars{background:var(--leaf)}
+.pillars .wrap{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0}
+.pillar{display:flex;gap:14px;align-items:flex-start;padding:26px 24px 26px 0}
+.pillar + .pillar{padding-left:24px;border-left:1.5px solid rgba(13,20,15,.18)}
+.pillar svg{width:30px;height:30px;flex:none;margin-top:2px}
+.pillar h3{font-size:20px;margin-bottom:4px}
+.pillar p{font-size:15.5px;line-height:1.45}
+@media (max-width:800px){
+  .pillars .wrap{grid-template-columns:1fr}
+  .pillar,.pillar + .pillar{padding:20px 0;border-left:0}
+  .pillar + .pillar{border-top:1.5px solid rgba(13,20,15,.18)}
+}
+
+section{padding-block:clamp(64px,9vw,112px)}
+.sec-head{display:grid;gap:14px;max-width:760px;margin-bottom:clamp(32px,5vw,52px)}
+.sec-head h2{font-size:clamp(32px,4.2vw,52px);font-weight:800}
+.sec-head p{color:var(--muted);font-size:18px;max-width:40em}
+
+/* Créditos */
+.credits-layout{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.5fr);gap:clamp(24px,4vw,48px);align-items:start}
+.credit-photo{position:sticky;top:96px;border-radius:var(--r);overflow:hidden;background:var(--mist)}
+.credit-photo img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.credit-photo figcaption{padding:12px 16px;font-size:14px;color:var(--muted)}
+.credit-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;border-top:1.5px solid var(--ink)}
+.credit{padding:24px 20px 26px 0;border-bottom:1px solid var(--line);display:grid;gap:8px;align-content:start}
+.credit:nth-child(2n){padding-left:20px;border-left:1px solid var(--line)}
+.credit .ic{width:40px;height:40px;border-radius:10px;background:var(--leaf-soft);display:grid;place-items:center}
+.credit .ic svg{width:22px;height:22px}
+.credit h3{font-size:22px;font-weight:700}
+.credit p{color:var(--muted);font-size:15.5px;line-height:1.5}
+.credit.wide{grid-column:1/-1;padding-left:0;border-left:0;background:var(--ink);color:#fff;padding:24px;border-radius:0 0 var(--r) var(--r);border-bottom:0;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:18px}
+.credit.wide p{color:#cfd8cc}
+.credit.wide .ic{background:var(--leaf)}
+@media (max-width:900px){
+  .credits-layout{grid-template-columns:1fr}
+  .credit-photo{position:static}
+  .credit-photo img{aspect-ratio:16/10}
+}
+@media (max-width:560px){
+  .credit-list{grid-template-columns:1fr}
+  .credit:nth-child(2n){padding-left:0;border-left:0}
+  .credit.wide{grid-template-columns:1fr}
+}
+
+/* Ahorro */
+.savings{background:var(--mist)}
+.save-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.save-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column}
+.save-card img{width:100%;aspect-ratio:16/9;object-fit:cover}
+.save-body{padding:26px clamp(20px,3vw,32px) 30px;display:grid;gap:16px;flex:1}
+.save-body h3{font-size:clamp(24px,2.4vw,30px)}
+.save-body > p{color:var(--muted)}
+.facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;border-top:1px solid var(--line);margin-top:auto}
+.fact{padding:14px 0 0}
+.fact + .fact{padding-left:18px;border-left:1px solid var(--line)}
+.fact dt{font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.fact dd{margin:4px 0 0;font:700 26px/1.1 var(--display);font-variant-numeric:tabular-nums}
+.fact dd small{font:500 14px/1.3 var(--body);color:var(--muted);display:block;margin-top:3px}
+.share-note{margin-top:20px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:18px;align-items:center;background:var(--ink);color:#fff;border-radius:var(--r);padding:22px clamp(20px,3vw,32px)}
+.share-coin{width:64px;height:64px;border-radius:50%;background:var(--leaf);color:var(--ink);display:grid;place-items:center;font:800 22px/1 var(--display)}
+.share-note p{color:#d6ded3}
+.share-note strong{color:#fff}
+@media (max-width:800px){.save-grid{grid-template-columns:1fr}}
+
+/* Nuestra gente */
+.people{background:var(--ink);color:#fff;padding-bottom:0}
+.people .sec-head p{color:#c4cec1}
+.mosaic{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));grid-auto-rows:clamp(120px,14vw,190px);gap:8px;padding:0 8px 8px}
+.mosaic figure{margin:0;position:relative;overflow:hidden;border-radius:6px}
+.mosaic img{width:100%;height:100%!important;object-fit:cover;transition:transform .5s ease}
+.mosaic figure:hover img{transform:scale(1.04)}
+.mosaic figcaption{position:absolute;left:10px;bottom:10px;right:10px;font-size:13px;line-height:1.3;color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.7)}
+.m1{grid-column:span 5;grid-row:span 2}
+.m2{grid-column:span 4;grid-row:span 2}
+.m3{grid-column:span 3;grid-row:span 2}
+.m4{grid-column:span 4}
+.m5{grid-column:span 4}
+.m6{grid-column:span 4}
+.slogan{grid-column:span 12;display:flex;align-items:center;justify-content:center;padding:clamp(28px,5vw,56px) 16px;text-align:center}
+.slogan p{font:800 clamp(30px,5vw,64px)/1.05 var(--display);letter-spacing:-.02em;color:var(--leaf);text-wrap:balance}
+@media (max-width:760px){
+  .mosaic{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:170px}
+  .m1,.m2,.m3,.m4,.m5,.m6{grid-column:span 1;grid-row:span 1}
+  .m1{grid-column:span 2;grid-row:span 2}
+  .slogan{grid-column:span 2}
+}
+
+/* Nosotros */
+.about-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(24px,4vw,56px)}
+.mv{display:grid;gap:12px;padding-top:18px;border-top:1.5px solid var(--ink)}
+.mv h3{font-size:28px}
+.mv p{color:var(--muted);font-size:17.5px}
+.values{margin-top:clamp(36px,5vw,56px)}
+.values h3{font-size:22px;margin-bottom:16px}
+.chips{display:flex;flex-wrap:wrap;gap:10px;list-style:none;padding:0;margin:0}
+.chips li{border:1.5px solid var(--ink);border-radius:999px;padding:9px 18px;font-weight:600;font-size:15.5px}
+.chips li:nth-child(odd){background:var(--leaf-soft);border-color:var(--leaf-soft)}
+.audience{margin-top:clamp(36px,5vw,56px);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);border-radius:var(--r);overflow:hidden;background:var(--mist)}
+.audience img{width:100%;height:100%!important;object-fit:cover;min-height:260px}
+.audience div{padding:clamp(24px,4vw,44px);display:grid;gap:14px;align-content:center}
+.audience h3{font-size:clamp(24px,2.6vw,32px)}
+.audience p{color:var(--muted)}
+@media (max-width:800px){.about-grid,.audience{grid-template-columns:1fr}.audience img{min-height:0;aspect-ratio:16/10}}
+
+/* Pre-solicitud */
+.apply{background:var(--leaf)}
+.apply-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(28px,5vw,64px);align-items:start}
+.apply .sec-head{margin-bottom:0}
+.apply .sec-head p{color:var(--ink-2)}
+.steps{list-style:none;padding:0;margin:24px 0 0;display:grid;gap:14px;counter-reset:s}
+.steps li{display:grid;grid-template-columns:36px minmax(0,1fr);gap:12px;align-items:start;font-weight:500}
+.steps li::before{counter-increment:s;content:counter(s);width:36px;height:36px;border-radius:50%;background:var(--ink);color:var(--leaf);display:grid;place-items:center;font:700 16px/1 var(--display)}
+form.card{background:var(--paper);border-radius:var(--r);padding:clamp(22px,3vw,34px);display:grid;gap:16px;box-shadow:0 18px 50px -24px rgba(13,20,15,.45)}
+.row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+label{display:grid;gap:6px;font-weight:600;font-size:14.5px}
+input,select,textarea{font:500 16px/1.4 var(--body);color:var(--ink);background:var(--paper);border:1.5px solid var(--line);border-radius:10px;padding:12px 14px;width:100%}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--leaf-deep);box-shadow:0 0 0 3px var(--leaf-soft)}
+textarea{min-height:84px;resize:vertical}
+.form-note{font-size:13.5px;color:var(--muted)}
+.form-err{color:#a3261b;font-size:14px;font-weight:600}
+form .btn{justify-content:center;width:100%}
+.btn-ink{background:var(--ink);color:#fff}
+.btn-ink:hover{background:var(--ink-2)}
+.wa-ready{display:grid;gap:10px;background:var(--leaf-soft);border-radius:10px;padding:14px}
+.wa-ready p{font-size:14.5px}
+@media (max-width:860px){.apply-grid{grid-template-columns:1fr}}
+@media (max-width:480px){.row{grid-template-columns:1fr}}
+
+/* Contacto */
+.contact-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(24px,4vw,48px);align-items:stretch}
+.channels{display:grid;gap:0;border-top:1.5px solid var(--ink)}
+.channel{display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:14px;align-items:center;padding:18px 0;border-bottom:1px solid var(--line)}
+.channel .ic{width:44px;height:44px;border-radius:12px;background:var(--mist);display:grid;place-items:center}
+.channel .ic svg{width:22px;height:22px}
+.channel dt{font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.channel dd{margin:2px 0 0;font:700 21px/1.25 var(--display);overflow-wrap:anywhere}
+.channel a.go{font-weight:600;font-size:14.5px;text-decoration:none;color:var(--leaf-deep);white-space:nowrap}
+.channel a.go:hover{text-decoration:underline}
+.copy{background:none;border:1.5px solid var(--line);border-radius:999px;padding:7px 12px;font:600 13.5px var(--body);color:var(--ink);cursor:pointer}
+.copy:hover{border-color:var(--ink)}
+.map-card{position:relative;border-radius:var(--r);overflow:hidden;background:var(--ink);color:#fff;display:flex;flex-direction:column;justify-content:flex-end;min-height:420px;text-decoration:none}
+.map-card canvas{position:absolute;inset:0;width:100%;height:100%}
+.map-info{position:relative;padding:24px;display:grid;gap:8px;background:linear-gradient(to top,rgba(13,20,15,.96) 40%,rgba(13,20,15,0))}
+.map-info h3{font-size:26px}
+.map-info p{color:#cfd8cc;font-size:15.5px}
+.coords{font:600 13px/1 var(--body);letter-spacing:.06em;color:var(--leaf);font-variant-numeric:tabular-nums}
+.map-info .btn{justify-self:start;margin-top:6px}
+@media (max-width:860px){.contact-grid{grid-template-columns:1fr}.map-card{min-height:360px}}
+
+/* Pie */
+footer{background:var(--ink);color:#b9c4b6;font-size:14.5px}
+footer .wrap{padding-block:48px 28px;display:grid;gap:32px}
+.foot-top{display:grid;grid-template-columns:minmax(0,1.4fr) repeat(2,minmax(0,1fr));gap:28px}
+footer h4{font:700 13px/1 var(--body);letter-spacing:.12em;text-transform:uppercase;color:#fff;margin:0 0 14px}
+footer ul{list-style:none;padding:0;margin:0;display:grid;gap:8px}
+footer a{text-decoration:none;color:#dfe7dc}
+footer a:hover{color:var(--leaf)}
+footer .brand-name{color:#fff}
+footer .brand-name small{color:#9aa697}
+.foot-legal{border-top:1px solid #2a372c;padding-top:20px;display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;font-size:13px}
+@media (max-width:760px){.foot-top{grid-template-columns:1fr}}
+
+/* Botón flotante WhatsApp */
+.wa-float{position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:30;width:58px;height:58px;border-radius:50%;background:#25d366;display:grid;place-items:center;box-shadow:0 10px 30px -8px rgba(0,0,0,.45)}
+.wa-float svg{width:32px;height:32px}
+</style>
+</head><body>
+
+<!-- ===== Íconos reutilizables ===== -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12.04 2a9.9 9.9 0 0 0-8.5 15l-1.4 5.1 5.2-1.4A9.9 9.9 0 1 0 12.04 2Zm0 18.1a8.2 8.2 0 0 1-4.2-1.15l-.3-.18-3.1.8.83-3-.2-.31a8.2 8.2 0 1 1 6.97 3.84Zm4.5-6.14c-.25-.12-1.46-.72-1.69-.8-.23-.08-.39-.12-.55.12-.16.25-.63.8-.78.97-.14.16-.29.18-.53.06a6.7 6.7 0 0 1-3.34-2.92c-.25-.43.25-.4.72-1.34.08-.16.04-.3-.02-.43-.06-.12-.55-1.33-.76-1.82-.2-.48-.4-.41-.55-.42h-.47a.9.9 0 0 0-.65.3 2.7 2.7 0 0 0-.85 2.02 4.7 4.7 0 0 0 .99 2.5 10.8 10.8 0 0 0 4.13 3.65c1.54.66 2.14.72 2.91.6.47-.07 1.46-.6 1.66-1.17.2-.58.2-1.07.15-1.17-.06-.11-.22-.17-.47-.29Z"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M5 3h3.5l1.7 4.3-2.2 1.4a11 11 0 0 0 5.3 5.3l1.4-2.2L19 13.5V17a2 2 0 0 1-2.2 2A16 16 0 0 1 3 5.2 2 2 0 0 1 5 3Z"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5"/></g></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></g></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></g></symbol>
+    <symbol id="i-fb" viewBox="0 0 24 24"><path fill="currentColor" d="M13.5 21v-7.6h2.6l.4-3h-3V8.5c0-.87.25-1.46 1.5-1.46h1.6V4.36A21 21 0 0 0 14.3 4.2c-2.3 0-3.9 1.4-3.9 4v2.2H7.8v3h2.6V21h3.1Z"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></symbol>
+  </defs>
+</svg>
+
+<div class="topbar">
+  <div class="wrap">
+    <span><b>Horario</b> &nbsp;8:00 a. m. – 3:30 p. m.</span>
+    <span>Tel. <a href="tel:+50326282505">2628-2505</a> &nbsp;·&nbsp; WhatsApp <a href="https://wa.me/50377245973" target="_blank" rel="noopener">7724-5973</a></span>
+  </div>
+</div>
+
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="#inicio" aria-label="Mi Crédito S.C., ir al inicio">
+      <span class="mark" aria-hidden="true">
+        <svg viewBox="0 0 32 32"><path d="M16 27V14" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/><path d="M16 15c0-5 3.5-8.5 9-9-.3 5.6-3.8 9-9 9Z" fill="#9ad95b"/><path d="M16 19c0-4-2.8-6.8-7.2-7.2.2 4.5 3 7.2 7.2 7.2Z" fill="#9ad95b"/></svg>
+      </span>
+      <span class="brand-name">Mi Crédito<small>S.C. de R.L. de C.V.</small></span>
+    </a>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mainNav">Menú</button>
+    <nav class="main" id="mainNav">
+      <ul>
+        <li><a href="#creditos">Créditos</a></li>
+        <li><a href="#ahorro">Ahorro</a></li>
+        <li><a href="#nosotros">Nosotros</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+        <li><a class="cta" href="#solicitud">Solicitar crédito</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="inicio">
+
+  <!-- Héroe -->
+  <section class="hero" style="padding:0" aria-labelledby="hero-title">
+    <div class="hero-copy on-dark">
+      <span class="eyebrow">Ciudad El Triunfo · Usulután Norte</span>
+      <h1 id="hero-title">Crédito y ahorro para la gente que <em>trabaja y hace crecer</em> El Salvador.</h1>
+      <p class="lead">Somos una institución de microfinanzas al servicio de comerciantes, productores y familias que la banca tradicional no ha tomado en cuenta. Le atendemos en persona y le respondemos rápido.</p>
+      <div class="actions">
+        <a class="btn btn-leaf" href="#solicitud">Solicitar mi crédito <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        <a class="btn btn-ghost" href="https://wa.me/50377245973" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg> Escríbanos</a>
+      </div>
+    </div>
+    <figure class="hero-photo" style="margin:0">
+      <img src="img/hero-ganadero.jpg" alt="Ganadero salvadoreño sonriente con sombrero" width="1400" height="912" fetchpriority="high">
+      <figcaption>Departamento de San Salvador</figcaption>
+    </figure>
+  </section>
+
+  <!-- Diferenciadores -->
+  <div class="pillars">
+    <div class="wrap">
+      <div class="pillar">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="#0d140f" stroke-width="1.8" stroke-linecap="round"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 19a5.5 5.5 0 0 1 11 0"/><path d="M16 11.5l2 2 3.5-4"/></g></svg>
+        <div><h3>Atención personalizada</h3><p>Le conocemos por su nombre y entendemos su negocio antes de ofrecerle un producto.</p></div>
+      </div>
+      <div class="pillar">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-clock" style="color:#0d140f"/></svg>
+        <div><h3>Respuesta rápida</h3><p>Trámites sencillos y una respuesta pronta para que su oportunidad no se pierda.</p></div>
+      </div>
+      <div class="pillar">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-pin" style="color:#0d140f"/></svg>
+        <div><h3>Cerca de usted</h3><p>Desde Ciudad El Triunfo atendemos a clientes de Usulután y San Miguel.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Créditos -->
+  <section id="creditos" aria-labelledby="cred-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Créditos</span>
+        <h2 id="cred-title">Un crédito para cada etapa de su trabajo y su hogar.</h2>
+        <p>Siete líneas de crédito pensadas para el comercio, el campo y la familia. Un asesor le indica los requisitos y las condiciones de cada una.</p>
+      </div>
+      <div class="credits-layout">
+        <figure class="credit-photo" style="margin:0">
+          <img src="img/patio-cafe.jpg" alt="Mujer trabajando en un patio de secado de café" width="1120" height="1400">
+          <figcaption>Secado de café al sol, El Salvador</figcaption>
+        </figure>
+        <div class="credit-list">
+          <article class="credit">
+            <span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="#2f6a1c" stroke-width="1.8" stroke-linejoin="round"><path d="M4 9h16l-1.5 10h-13Z"/><path d="M8.5 9V7a3.5 3.5 0 0 1 7 0v2"/></g></svg></span>
+            <h3>Comercio</h3>
+            <p>Capital de trabajo para surtir su tienda, puesto o negocio y vender más.</p>
+          </article>
+          <article class="credit">
+            <span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="#2f6a1c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20v-8"/><path d="M12 12c0-4 2.7-6.6 7-7-.2 4.3-3 7-7 7Z"/><path d="M12 15c0-3-2.1-5.2-5.5-5.5.2 3.4 2.3 5.5 5.5 5.5Z"/><path d="M5 20h14"/></g></svg></span>
+            <h3>Agropecuario</h3>
+            <p>Para siembras, cosechas, ganado e insumos del campo.</p>
+          </article>
+          <article class="credit">
+            <span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="#2f6a1c" stroke-width="1.8" stroke-linejoin="round"><path d="M4 11 12 4l8 7"/><path d="M6 10v10h12V10"/><path d="M10 20v-5h4v5"/></g></svg></span>
+            <h3>Mejoramiento de vivienda</h3>
+            <p>Repare, amplíe o mejore su casa por etapas, a su ritmo.</p>
+          </article>
+          <article class="credit">
+            <span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="#2f6a1c" stroke-width="1.8" stroke-linejoin="round"><rect x="3" y="6" width="18" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/></g></svg></span>
+            <h3>Consumo</h3>
+            <p>Para gastos personales y familiares: estudios, salud o compras del hogar.</p>
+          </article>
+          <article class="credit">
+            <span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="#2f6a1c" stroke-width="1.8" stroke-linejoin="round"><path d="M3 20V10l5 3V10l5 3V10l5 3v7Z"/><path d="M18 13V5h2v15"/></g></svg></span>
+            <h3>Industria</h3>
+            <p>Maquinaria, materia prima y equipo para talleres y pequeñas industrias.</p>
+          </article>
+          <article class="credit">
+            <span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="#2f6a1c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 6.5a4 4 0 0 0-5 5L4 17l3 3 5.5-5.5a4 4 0 0 0 5-5l-2.5 2.5-2.5-.5-.5-2.5Z"/></g></svg></span>
+            <h3>Servicio</h3>
+            <p>Para quienes ofrecen un oficio o servicio: transporte, belleza, reparaciones y más.</p>
+          </article>
+          <article class="credit wide">
+            <span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="#0d140f" stroke-width="2" stroke-linecap="round"><circle cx="6" cy="12" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="18" cy="18" r="2"/><path d="M8 11l8-4M8 13l8 4"/></g></svg></span>
+            <div>
+              <h3>Microcrédito multidestino</h3>
+              <p>Montos pequeños para lo que usted necesite, con un trámite ágil.</p>
+            </div>
+            <a class="btn btn-leaf" href="#solicitud">Solicitar</a>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ahorro -->
+  <section id="ahorro" class="savings" aria-labelledby="ahorro-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Ahorro e inversión</span>
+        <h2 id="ahorro-title">Haga crecer su dinero con nosotros.</h2>
+        <p>Dos formas de ahorrar: una para tener su dinero disponible cuando lo necesite y otra para hacerlo rendir más a un plazo fijo.</p>
+      </div>
+      <div class="save-grid">
+        <article class="save-card">
+          <img src="img/mujeres-cafe.jpg" alt="Mujeres seleccionando granos de café en Concepción de Ataco" width="1400" height="1066">
+          <div class="save-body">
+            <span class="eyebrow">Cuenta de ahorro a la vista</span>
+            <h3>Su dinero disponible cuando lo necesite.</h3>
+            <p>Ahorre poco a poco y retire en cualquier momento. Ideal para el fondo del negocio o los gastos de la familia.</p>
+            <dl class="facts">
+              <div class="fact"><dt>Apertura</dt><dd>$10.00</dd></div>
+              <div class="fact"><dt>Disponibilidad</dt><dd>Inmediata<small>Liquidez en todo momento</small></dd></div>
+            </dl>
+          </div>
+        </article>
+        <article class="save-card">
+          <img src="img/secado-semilla.jpg" alt="Hombre extendiendo café a secar al sol" width="1400" height="1120">
+          <div class="save-body">
+            <span class="eyebrow">Depósito a plazo fijo</span>
+            <h3>Más rendimiento por su dinero.</h3>
+            <p>Su depósito gana una tasa de interés más alta que la que ofrecen otras financieras y bancos del mercado. Al vencimiento, recibe su capital o lo renueva de forma automática, como usted prefiera.</p>
+            <dl class="facts">
+              <div class="fact"><dt>Apertura mínima</dt><dd>$500.00</dd></div>
+              <div class="fact"><dt>Tasa</dt><dd>Preferencial<small>Consulte la tasa vigente</small></dd></div>
+            </dl>
+          </div>
+        </article>
+      </div>
+      <div class="share-note">
+        <div class="share-coin" aria-hidden="true">$1</div>
+        <p><strong>Requisito para ambas cuentas:</strong> pagar la suscripción de una acción preferente de $1.00. Con ella usted forma parte de Mi Crédito.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Nuestra gente -->
+  <section class="people on-dark" aria-labelledby="gente-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Nuestra gente</span>
+        <h2 id="gente-title">Trabajamos para quienes levantan el país todos los días.</h2>
+        <p>Productores, comerciantes, artesanos y familias de nuestras comunidades rurales. Su esfuerzo es la razón de ser de Mi Crédito.</p>
+      </div>
+    </div>
+    <div class="mosaic">
+      <figure class="m1"><img src="img/ganado-usulutan.jpg" alt="Vaca pastando en un potrero verde con un volcán al fondo, Usulután" width="1000" height="1400" style="object-position:50% 70%"><figcaption>Usulután</figcaption></figure>
+      <figure class="m2"><img src="img/finca.jpg" alt="Caficultor entre cafetales en una finca salvadoreña" width="1400" height="934"><figcaption>Finca Santa María</figcaption></figure>
+      <figure class="m3"><img src="img/vecino.jpg" alt="Señor salvadoreño sonriente con camisa a rayas y sombrero" width="933" height="1400" style="object-position:50% 25%"><figcaption>El Salvador</figcaption></figure>
+      <figure class="m4"><img src="img/mural-sansebastian.jpg" alt="Mujeres caminando frente a un mural del telar en San Sebastián" width="1400" height="935"><figcaption>San Sebastián, tierra de telares</figcaption></figure>
+      <figure class="m5"><img src="img/mujeres-cafe.jpg" alt="Mujeres seleccionando café a mano" width="1400" height="1066" style="object-position:50% 40%"><figcaption>Concepción de Ataco</figcaption></figure>
+      <figure class="m6"><img src="img/patio-cafe.jpg" alt="Trabajadora en un patio de secado de café" width="1120" height="1400" style="object-position:50% 35%"><figcaption>Secado de café</figcaption></figure>
+      <div class="slogan"><p>“Nos inspiras a crecer juntos”</p></div>
+    </div>
+  </section>
+
+  <!-- Nosotros -->
+  <section id="nosotros" aria-labelledby="nos-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Nosotros</span>
+        <h2 id="nos-title">Microfinanzas con compromiso social.</h2>
+        <p>Mi Crédito S.C. de R.L. de C.V. ofrece ahorro, depósitos a plazo y créditos desde Ciudad El Triunfo, Usulután Norte.</p>
+      </div>
+      <div class="about-grid">
+        <div class="mv">
+          <span class="eyebrow">Misión</span>
+          <h3>Impulsar el desarrollo de nuestras comunidades.</h3>
+          <p>Ser una institución financiera especializada en microcréditos, que impulse el desarrollo económico y social de sus clientes, empleados y comunidades rurales, a través de productos y servicios accesibles, confiables y orientados al bienestar colectivo.</p>
+        </div>
+        <div class="mv">
+          <span class="eyebrow">Visión</span>
+          <h3>Ser un referente en el mercado salvadoreño.</h3>
+          <p>Ser una institución de microfinanzas con exclusividad para nuestros clientes, referente en el mercado salvadoreño y reconocida por su solidez, innovación y compromiso social, brindando soluciones financieras sostenibles y prácticas.</p>
+        </div>
+      </div>
+      <div class="values">
+        <h3>Nuestros valores</h3>
+        <ul class="chips">
+          <li>Honestidad</li><li>Transparencia</li><li>Lealtad</li><li>Responsabilidad</li><li>Equidad</li><li>Eficiencia</li><li>Innovación</li>
+        </ul>
+      </div>
+      <div class="audience">
+        <img src="img/finca.jpg" alt="Productor salvadoreño en su finca" width="1400" height="934">
+        <div>
+          <span class="eyebrow">A quién servimos</span>
+          <h3>Para quienes no han tenido acceso a la banca tradicional.</h3>
+          <p>Atendemos principalmente a personas del sector informal: el vendedor del mercado, la señora que tiene su tienda, el productor que siembra su parcela. Le ayudamos a ordenar sus finanzas y a dar el siguiente paso.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pre-solicitud -->
+  <section id="solicitud" class="apply" aria-labelledby="sol-title">
+    <div class="wrap apply-grid">
+      <div class="sec-head">
+        <span class="eyebrow" style="color:#0d140f">Solicitud de crédito</span>
+        <h2 id="sol-title">Empiece su solicitud en un minuto.</h2>
+        <p>Complete sus datos y envíelos por WhatsApp. Un asesor le contactará para explicarle los requisitos y el siguiente paso.</p>
+        <ol class="steps">
+          <li>Complete el formulario.</li>
+          <li>Envíe el mensaje por WhatsApp.</li>
+          <li>Un asesor le responde y le orienta.</li>
+        </ol>
+      </div>
+      <form class="card" id="applyForm" novalidate>
+        <div class="row">
+          <label for="f-nombre">Nombre completo<input id="f-nombre" name="nombre" autocomplete="name" placeholder="Ej. María López" required></label>
+          <label for="f-tel">Teléfono<input id="f-tel" name="telefono" inputmode="tel" autocomplete="tel" placeholder="Ej. 7000-0000" required></label>
+        </div>
+        <div class="row">
+          <label for="f-tipo">Tipo de crédito
+            <select id="f-tipo" name="tipo" required>
+              <option value="">Seleccione…</option>
+              <option>Comercio</option><option>Agropecuario</option><option>Mejoramiento de vivienda</option><option>Consumo</option><option>Industria</option><option>Servicio</option><option>Microcrédito multidestino</option><option>Ahorro o depósito a plazo</option>
+            </select>
+          </label>
+          <label for="f-monto">Monto aproximado (US$)<input id="f-monto" name="monto" inputmode="decimal" placeholder="Ej. 1,500"></label>
+        </div>
+        <label for="f-muni">Municipio donde vive<input id="f-muni" name="municipio" placeholder="Ej. Ciudad El Triunfo"></label>
+        <label for="f-msg">¿Para qué lo necesita? (opcional)<textarea id="f-msg" name="mensaje" placeholder="Cuéntenos brevemente"></textarea></label>
+        <p class="form-err" id="formErr" hidden>Escriba su nombre, su teléfono y el tipo de crédito para continuar.</p>
+        <button class="btn btn-ink" type="submit"><svg aria-hidden="true"><use href="#i-wa"/></svg> Preparar mensaje de WhatsApp</button>
+        <div class="wa-ready" id="waReady" hidden>
+          <p>Su mensaje está listo. Abra WhatsApp para enviarlo al 7724-5973.</p>
+          <a class="btn btn-leaf" id="waLink" href="https://wa.me/50377245973" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg> Abrir WhatsApp</a>
+        </div>
+        <p class="form-note">Sus datos solo se usan para atender su solicitud. Enviar este mensaje no compromete su aprobación.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- Contacto -->
+  <section id="contacto" aria-labelledby="con-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Contacto</span>
+        <h2 id="con-title">Visítenos o escríbanos.</h2>
+        <p>Con gusto le atendemos en nuestra oficina de Ciudad El Triunfo, por teléfono o por WhatsApp.</p>
+      </div>
+      <div class="contact-grid">
+        <dl class="channels">
+          <div class="channel">
+            <span class="ic"><svg aria-hidden="true"><use href="#i-wa"/></svg></span>
+            <div><dt>WhatsApp</dt><dd>7724-5973</dd></div>
+            <a class="go" href="https://wa.me/50377245973" target="_blank" rel="noopener">Escribir</a>
+          </div>
+          <div class="channel">
+            <span class="ic"><svg aria-hidden="true"><use href="#i-phone"/></svg></span>
+            <div><dt>Teléfono</dt><dd>2628-2505</dd></div>
+            <button class="copy" type="button" data-copy="2628-2505">Copiar</button>
+          </div>
+          <div class="channel">
+            <span class="ic"><svg aria-hidden="true"><use href="#i-mail"/></svg></span>
+            <div><dt>Correo</dt><dd>atencionalcliente@micreditosc.com.sv</dd></div>
+            <button class="copy" type="button" data-copy="atencionalcliente@micreditosc.com.sv">Copiar</button>
+          </div>
+          <div class="channel">
+            <span class="ic"><svg aria-hidden="true"><use href="#i-clock"/></svg></span>
+            <div><dt>Horario de atención</dt><dd>8:00 a. m. – 3:30 p. m.</dd></div>
+            <span></span>
+          </div>
+          <div class="channel">
+            <span class="ic"><svg aria-hidden="true"><use href="#i-fb"/></svg></span>
+            <div><dt>Facebook</dt><dd>Mi Crédito S.C.</dd></div>
+            <a class="go" href="https://www.facebook.com/share/1HeAaagJwC/" target="_blank" rel="noopener">Seguir</a>
+          </div>
+        </dl>
+        <a class="map-card" href="https://www.google.com/maps/search/?api=1&amp;query=13.560146,-88.430919" target="_blank" rel="noopener" aria-label="Abrir la ubicación de Mi Crédito en Google Maps">
+          <canvas id="mapCanvas" aria-hidden="true"></canvas>
+          <div class="map-info">
+            <span class="coords">13.5601° N · 88.4309° O</span>
+            <h3>3a Calle Oriente, Ciudad El Triunfo</h3>
+            <p>Usulután Norte, El Salvador</p>
+            <span class="btn btn-leaf"><svg aria-hidden="true"><use href="#i-pin"/></svg> Cómo llegar</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div style="display:grid;gap:14px;align-content:start">
+        <a class="brand" href="#inicio">
+          <span class="mark" aria-hidden="true" style="background:#1b261d"><svg viewBox="0 0 32 32"><path d="M16 27V14" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/><path d="M16 15c0-5 3.5-8.5 9-9-.3 5.6-3.8 9-9 9Z" fill="#9ad95b"/><path d="M16 19c0-4-2.8-6.8-7.2-7.2.2 4.5 3 7.2 7.2 7.2Z" fill="#9ad95b"/></svg></span>
+          <span class="brand-name">Mi Crédito<small>S.C. de R.L. de C.V.</small></span>
+        </a>
+        <p style="max-width:30em">“Nos inspiras a crecer juntos”. Ahorro, depósitos a plazo y créditos para las familias y negocios de nuestras comunidades.</p>
+      </div>
+      <div>
+        <h4>Productos</h4>
+        <ul><li><a href="#creditos">Créditos</a></li><li><a href="#ahorro">Ahorro a la vista</a></li><li><a href="#ahorro">Depósito a plazo fijo</a></li><li><a href="#solicitud">Solicitar crédito</a></li></ul>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul><li>Tel. 2628-2505</li><li>WhatsApp 7724-5973</li><li>3a Calle Oriente, Ciudad El Triunfo, Usulután Norte</li><li>atencionalcliente@micreditosc.com.sv</li><li><a href="https://www.facebook.com/share/1HeAaagJwC/" target="_blank" rel="noopener">Facebook</a></li></ul>
+      </div>
+    </div>
+    <div class="foot-legal">
+      <span>© <span id="yr">2026</span> MI CRÉDITO S.C. DE R.L. DE C.V. Todos los derechos reservados.</span>
+      <span>micreditosc.com.sv · Fotografías: Unsplash y Pexels.</span>
+    </div>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/50377245973" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp al 7724-5973"><svg aria-hidden="true" style="color:#fff"><use href="#i-wa"/></svg></a>
+
+<script>
+(function(){
+  // Menú móvil
+  var btn=document.getElementById('menuBtn'), nav=document.getElementById('mainNav');
+  function setNav(open){btn.setAttribute('aria-expanded',open);nav.hidden=!open;}
+  var mq=window.matchMedia('(max-width:900px)');
+  function sync(){ if(mq.matches){setNav(false);} else {nav.hidden=false;btn.setAttribute('aria-expanded','false');} }
+  sync(); mq.addEventListener ? mq.addEventListener('change',sync) : mq.addListener(sync);
+  btn.addEventListener('click',function(){setNav(btn.getAttribute('aria-expanded')!=='true');});
+  nav.addEventListener('click',function(e){ if(e.target.tagName==='A' && mq.matches) setNav(false); });
+
+  // Año
+  document.getElementById('yr').textContent=new Date().getFullYear();
+
+  // Copiar
+  document.querySelectorAll('.copy').forEach(function(b){
+    b.addEventListener('click',function(){
+      var t=b.getAttribute('data-copy');
+      var done=function(){b.textContent='Copiado';setTimeout(function(){b.textContent='Copiar';},1800);};
+      try{ navigator.clipboard.writeText(t).then(done,function(){selectText(b);}); }catch(e){ selectText(b); }
+    });
+  });
+  function selectText(b){var dd=b.parentNode.querySelector('dd');var r=document.createRange();r.selectNodeContents(dd);var s=getSelection();s.removeAllRanges();s.addRange(r);}
+
+  // Pre-solicitud por WhatsApp
+  var form=document.getElementById('applyForm'), err=document.getElementById('formErr'), ready=document.getElementById('waReady'), link=document.getElementById('waLink');
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var v=function(id){return document.getElementById(id).value.trim();};
+    if(!v('f-nombre')||!v('f-tel')||!v('f-tipo')){err.hidden=false;ready.hidden=true;return;}
+    err.hidden=true;
+    var lines=['Hola, Mi Crédito. Quiero solicitar información.','Nombre: '+v('f-nombre'),'Teléfono: '+v('f-tel'),'Producto: '+v('f-tipo')];
+    if(v('f-monto')) lines.push('Monto aproximado: $'+v('f-monto'));
+    if(v('f-muni')) lines.push('Municipio: '+v('f-muni'));
+    if(v('f-msg')) lines.push('Detalle: '+v('f-msg'));
+    link.href='https://wa.me/50377245973?text='+encodeURIComponent(lines.join('\n'));
+    ready.hidden=false;
+  });
+
+  // Mapa ilustrado de la ubicación (sin servicios externos)
+  var c=document.getElementById('mapCanvas'), ctx=c.getContext('2d');
+  function draw(){
+    var r=c.getBoundingClientRect(), d=window.devicePixelRatio||1;
+    c.width=r.width*d; c.height=r.height*d; ctx.setTransform(d,0,0,d,0,0);
+    var w=r.width,h=r.height;
+    ctx.fillStyle='#0d140f'; ctx.fillRect(0,0,w,h);
+    // manzanas
+    ctx.strokeStyle='rgba(154,217,91,.10)'; ctx.lineWidth=1;
+    for(var x=-40;x<w+40;x+=46){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x+30,h);ctx.stroke();}
+    for(var y=10;y<h;y+=40){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(w,y-14);ctx.stroke();}
+    // calles principales
+    ctx.strokeStyle='rgba(255,255,255,.22)'; ctx.lineWidth=7; ctx.lineCap='round';
+    ctx.beginPath(); ctx.moveTo(-10,h*.42); ctx.bezierCurveTo(w*.3,h*.36,w*.6,h*.44,w+10,h*.30); ctx.stroke();
+    ctx.lineWidth=4;
+    ctx.beginPath(); ctx.moveTo(w*.18,-10); ctx.lineTo(w*.30,h+10); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(w*.66,-10); ctx.lineTo(w*.58,h+10); ctx.stroke();
+    // 3a Calle Oriente resaltada
+    ctx.strokeStyle='#9ad95b'; ctx.lineWidth=4;
+    ctx.beginPath(); ctx.moveTo(w*.26,h*.24); ctx.lineTo(w+10,h*.14); ctx.stroke();
+    ctx.fillStyle='rgba(154,217,91,.9)'; ctx.font='600 11px "Albert Sans",Arial,sans-serif';
+    ctx.save(); ctx.translate(w*.70,h*.155); ctx.rotate(-Math.atan2(h*.10,w*.74)); ctx.fillText('3a CALLE ORIENTE',0,-8); ctx.restore();
+    // pin
+    var px=w*.47, py=h*.21;
+    ctx.fillStyle='rgba(154,217,91,.18)'; ctx.beginPath(); ctx.arc(px,py,26,0,Math.PI*2); ctx.fill();
+    ctx.fillStyle='#9ad95b'; ctx.beginPath(); ctx.arc(px,py,9,0,Math.PI*2); ctx.fill();
+    ctx.fillStyle='#0d140f'; ctx.beginPath(); ctx.arc(px,py,3.5,0,Math.PI*2); ctx.fill();
+  }
+  draw(); window.addEventListener('resize',draw);
+  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(draw);
+})();
+</script>
+</body></html>
