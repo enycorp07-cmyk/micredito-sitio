@@ -1,6 +1,8 @@
 <!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Mi Crédito S.C.</title>
 <meta name="description" content="Mi Crédito S.C. — créditos, ahorro y depósitos a plazo en Ciudad El Triunfo, Usulután Norte. Atención personalizada y respuesta rápida.">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="canonical" href="https://micreditosc.com/">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://micreditosc.com/">
@@ -62,9 +64,10 @@ p{margin:0}
 header.site{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(255,255,255,.96);backdrop-filter:saturate(1.4) blur(8px);border-bottom:1px solid var(--line)}
 header.site .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;padding-block:14px}
 .brand{display:flex;align-items:center;gap:12px;text-decoration:none}
-.mark{width:44px;height:44px;border-radius:12px;background:var(--ink);display:grid;place-items:center;flex:none}
-.mark svg{width:28px;height:28px}
-.brand-name{font:800 22px/1 var(--display);letter-spacing:-.02em}
+.mark{width:52px;height:52px;flex:none;display:block}
+.foot-logo{display:block;background:#fff;border-radius:12px;padding:12px 16px;max-width:320px}
+.foot-logo img{width:100%;height:auto}
+.brand-name{font:800 23px/1 var(--display);letter-spacing:-.01em;text-transform:uppercase}
 .brand-name small{display:block;font:600 11px/1.3 var(--body);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:3px}
 nav.main ul{display:flex;gap:4px;list-style:none;margin:0;padding:0;align-items:center}
 nav.main a{display:block;text-decoration:none;font-weight:600;font-size:15.5px;padding:10px 14px;border-radius:999px}
@@ -288,9 +291,7 @@ footer .brand-name small{color:#9aa697}
 <header class="site">
   <div class="wrap">
     <a class="brand" href="#inicio" aria-label="Mi Crédito S.C., ir al inicio">
-      <span class="mark" aria-hidden="true">
-        <svg viewBox="0 0 32 32"><path d="M16 27V14" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/><path d="M16 15c0-5 3.5-8.5 9-9-.3 5.6-3.8 9-9 9Z" fill="#9ad95b"/><path d="M16 19c0-4-2.8-6.8-7.2-7.2.2 4.5 3 7.2 7.2 7.2Z" fill="#9ad95b"/></svg>
-      </span>
+      <img class="mark" src="img/logo-icono.png" alt="" width="52" height="52">
       <span class="brand-name">Mi Crédito<small>S.C. de R.L. de C.V.</small></span>
     </a>
     <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mainNav">Menú</button>
@@ -592,11 +593,8 @@ footer .brand-name small{color:#9aa697}
   <div class="wrap">
     <div class="foot-top">
       <div style="display:grid;gap:14px;align-content:start">
-        <a class="brand" href="#inicio">
-          <span class="mark" aria-hidden="true" style="background:#1b261d"><svg viewBox="0 0 32 32"><path d="M16 27V14" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/><path d="M16 15c0-5 3.5-8.5 9-9-.3 5.6-3.8 9-9 9Z" fill="#9ad95b"/><path d="M16 19c0-4-2.8-6.8-7.2-7.2.2 4.5 3 7.2 7.2 7.2Z" fill="#9ad95b"/></svg></span>
-          <span class="brand-name">Mi Crédito<small>S.C. de R.L. de C.V.</small></span>
-        </a>
-        <p style="max-width:30em">“Nos inspiras a crecer juntos”. Ahorro, depósitos a plazo y créditos para las familias y negocios de nuestras comunidades.</p>
+        <a class="foot-logo" href="#inicio"><img src="img/logo-micredito.png" alt="Mi Crédito — Nos inspiras a crecer juntos" width="1067" height="240"></a>
+        <p style="max-width:30em">MI CRÉDITO S.C. de R.L. de C.V. Ahorro, depósitos a plazo y créditos para las familias y negocios de nuestras comunidades.</p>
       </div>
       <div>
         <h4>Productos</h4>
