@@ -188,6 +188,20 @@ section{padding-block:clamp(64px,9vw,112px)}
   .slogan{grid-column:span 2}
 }
 
+/* Clientes */
+.clients{background:var(--paper)}
+.client-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;list-style:none;margin:0;padding:0}
+.client{margin:0;display:grid;gap:10px;align-content:start}
+.client img{width:100%;aspect-ratio:4/5;height:auto;object-fit:cover;border-radius:var(--r);background:var(--mist)}
+.client figcaption{display:grid;gap:2px}
+.client figcaption b{font:700 18px/1.2 var(--display)}
+.client figcaption span{font-size:14px;color:var(--muted)}
+.client-cta{background:var(--leaf);border-radius:var(--r);padding:24px;display:grid;align-content:space-between;gap:18px;aspect-ratio:4/5;max-width:100%}
+.client-cta p{font:800 clamp(22px,2.2vw,28px)/1.1 var(--display);letter-spacing:-.01em;text-wrap:balance}
+.client-cta .btn{justify-self:start}
+@media (max-width:980px){.client-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:700px){.client-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.client figcaption b{font-size:16px}.client-cta{aspect-ratio:4/5;padding:16px}.client-cta p{font-size:19px}.client-cta .btn{padding:12px 14px;font-size:14px}}
+
 /* Nosotros */
 .about-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(24px,4vw,56px)}
 .mv{display:grid;gap:12px;padding-top:18px;border-top:1.5px solid var(--ink)}
@@ -300,6 +314,7 @@ footer .brand-name small{color:#9aa697}
       <ul>
         <li><a href="#creditos">Créditos</a></li>
         <li><a href="#ahorro">Ahorro</a></li>
+        <li><a href="#clientes">Clientes</a></li>
         <li><a href="#nosotros">Nosotros</a></li>
         <li><a href="#contacto">Contacto</a></li>
         <li><a class="cta" href="#solicitud">Solicitar crédito</a></li>
@@ -460,6 +475,31 @@ footer .brand-name small{color:#9aa697}
       <figure class="m5"><img src="img/mujeres-cafe.jpg" alt="Mujeres seleccionando café a mano" width="1400" height="1066" style="object-position:50% 40%"><figcaption>Concepción de Ataco</figcaption></figure>
       <figure class="m6"><img src="img/pescador-eltunco.jpg" alt="Pescador salvadoreño lanzando su atarraya al atardecer en la playa El Tunco" width="1400" height="933" style="object-position:55% 62%"><figcaption>Playa El Tunco, La Libertad</figcaption></figure>
       <div class="slogan"><p>“Nos inspiras a crecer juntos”</p></div>
+    </div>
+  </section>
+
+  <!-- Clientes -->
+  <section id="clientes" class="clients" aria-labelledby="cli-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Nuestros clientes</span>
+        <h2 id="cli-title">Negocios que crecen con Mi Crédito.</h2>
+        <p>Carpinteros, costureras, tenderas, panaderos y productores de nuestras comunidades. Estos son algunos de los clientes que confían en nosotros.</p>
+      </div>
+      <ul class="client-grid">
+        <li><figure class="client"><img src="img/cliente-carpinteria.jpg" alt="Cliente de Mi Crédito trabajando la madera en su carpintería" width="1200" height="1200" loading="lazy" style="object-position:50% 40%"><figcaption><b>Carpintería</b><span>Muebles y puertas a la medida</span></figcaption></figure></li>
+        <li><figure class="client"><img src="img/cliente-costureria.jpg" alt="Clienta de Mi Crédito cosiendo en su taller de costura" width="1200" height="800" loading="lazy" style="object-position:78% 50%"><figcaption><b>Costurería</b><span>Confección y arreglos de ropa</span></figcaption></figure></li>
+        <li><figure class="client"><img src="img/cliente-tienda.jpg" alt="Clienta de Mi Crédito acomodando productos en su tienda" width="1200" height="800" loading="lazy" style="object-position:45% 50%"><figcaption><b>Tienda</b><span>Abarrotes para su comunidad</span></figcaption></figure></li>
+        <li><figure class="client"><img src="img/cliente-tortilleria.jpg" alt="Clienta de Mi Crédito haciendo tortillas en su comal" width="1200" height="800" loading="lazy" style="object-position:62% 50%"><figcaption><b>Tortillería</b><span>Tortillas hechas a mano cada día</span></figcaption></figure></li>
+        <li><figure class="client"><img src="img/cliente-comida.jpg" alt="Cliente de Mi Crédito mostrando un plato en su puesto de comida" width="800" height="1200" loading="lazy" style="object-position:50% 35%"><figcaption><b>Venta de comida</b><span>Su propio puesto de comida</span></figcaption></figure></li>
+        <li><figure class="client"><img src="img/cliente-mototaxi.jpg" alt="Cliente de Mi Crédito junto a su mototaxi" width="800" height="1200" loading="lazy" style="object-position:50% 55%"><figcaption><b>Mototaxi</b><span>Transporte para su municipio</span></figcaption></figure></li>
+        <li><figure class="client"><img src="img/cliente-electronica.jpg" alt="Cliente de Mi Crédito en su taller de reparación de electrónicos" width="1200" height="800" loading="lazy" style="object-position:55% 45%"><figcaption><b>Reparación de electrónicos</b><span>Taller de reparación de celulares</span></figcaption></figure></li>
+        <li><figure class="client"><img src="img/cliente-unas.jpg" alt="Clienta de Mi Crédito en su salón de uñas" width="1200" height="800" loading="lazy" style="object-position:40% 50%"><figcaption><b>Salón de uñas</b><span>Belleza y cuidado personal</span></figcaption></figure></li>
+        <li><figure class="client"><img src="img/cliente-milpa.jpg" alt="Clienta de Mi Crédito en su milpa" width="800" height="1200" loading="lazy" style="object-position:50% 45%"><figcaption><b>Agricultura</b><span>Cultivo de maíz</span></figcaption></figure></li>
+        <li><figure class="client"><img src="img/cliente-panaderia.jpg" alt="Cliente de Mi Crédito con una bandeja de pan recién horneado" width="800" height="1200" loading="lazy" style="object-position:50% 45%"><figcaption><b>Panadería</b><span>Pan horneado cada mañana</span></figcaption></figure></li>
+        <li><figure class="client"><img src="img/cliente-venta.jpg" alt="Clienta de Mi Crédito con su venta en la calle" width="800" height="1200" loading="lazy" style="object-position:50% 50%"><figcaption><b>Comercio</b><span>Venta en la calle</span></figcaption></figure></li>
+        <li class="client-cta"><p>Su negocio puede ser el próximo.</p><a class="btn btn-ink" href="#solicitud">Solicitar crédito <svg aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+      </ul>
     </div>
   </section>
 
