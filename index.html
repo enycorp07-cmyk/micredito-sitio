@@ -165,7 +165,7 @@ section{padding-block:clamp(64px,9vw,112px)}
 @media (max-width:800px){.save-grid{grid-template-columns:1fr}}
 
 /* Nuestra gente */
-.people{background:var(--ink);color:#fff;padding-bottom:0}
+.people{background:var(--ink);color:#fff;padding-bottom:clamp(24px,4vw,40px)}
 .people .sec-head p{color:#c4cec1}
 .mosaic{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));grid-auto-rows:clamp(120px,14vw,190px);gap:8px;padding:0 8px 8px}
 .mosaic figure{margin:0;position:relative;overflow:hidden;border-radius:6px}
@@ -178,7 +178,7 @@ section{padding-block:clamp(64px,9vw,112px)}
 .m4{grid-column:span 4}
 .m5{grid-column:span 4}
 .m6{grid-column:span 4}
-.slogan{grid-column:span 12;display:flex;align-items:center;justify-content:center;padding:clamp(28px,5vw,56px) 16px;text-align:center}
+.slogan{display:flex;align-items:center;justify-content:center;padding:clamp(28px,5vw,56px) 16px;text-align:center}
 .slogan p{font:800 clamp(30px,5vw,64px)/1.05 var(--display);letter-spacing:-.02em;color:var(--leaf);text-wrap:balance}
 @media (max-width:760px){
   .mosaic{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:170px}
@@ -217,6 +217,8 @@ section{padding-block:clamp(64px,9vw,112px)}
 .audience div{padding:clamp(24px,4vw,44px);display:grid;gap:14px;align-content:center}
 .audience h3{font-size:clamp(24px,2.6vw,32px)}
 .audience p{color:var(--muted)}
+.audience--text{grid-template-columns:1fr}
+.audience--text div{max-width:760px}
 @media (max-width:800px){.about-grid,.audience{grid-template-columns:1fr}.audience img{min-height:0;aspect-ratio:16/10}}
 
 /* Pre-solicitud */
@@ -439,7 +441,7 @@ footer .brand-name small{color:#9aa697}
           </div>
         </article>
         <article class="save-card">
-          <img src="img/secado-semilla.jpg" alt="Hombre extendiendo café a secar al sol" width="1400" height="1120">
+          <img src="img/cliente-ganadero.jpg" alt="Cliente ganadero de Mi Crédito con su vaca y su ternero" width="960" height="1280" style="object-position:50% 30%">
           <div class="save-body">
             <span class="eyebrow">Depósito a plazo fijo</span>
             <h3>Más rendimiento por su dinero.</h3>
@@ -467,15 +469,7 @@ footer .brand-name small{color:#9aa697}
         <p>Productores, comerciantes, artesanos y familias de nuestras comunidades rurales. Su esfuerzo es la razón de ser de Mi Crédito.</p>
       </div>
     </div>
-    <div class="mosaic">
-      <figure class="m1"><img src="img/cliente-carreta-bueyes.jpg" alt="Cliente de Mi Crédito con su carreta y yunta de bueyes" width="1050" height="1400" style="object-position:50% 45%"><figcaption>Cliente de Mi Crédito</figcaption></figure>
-      <figure class="m2"><img src="img/finca.jpg" alt="Caficultor entre cafetales en una finca salvadoreña" width="1400" height="934"><figcaption>Finca Santa María</figcaption></figure>
-      <figure class="m3"><img src="img/cliente-ganadero.jpg" alt="Cliente ganadero de Mi Crédito con su vaca y su ternero" width="960" height="1280" style="object-position:50% 40%"><figcaption>Cliente de Mi Crédito</figcaption></figure>
-      <figure class="m4"><img src="img/mural-sansebastian.jpg" alt="Mujeres caminando frente a un mural del telar en San Sebastián" width="1400" height="935"><figcaption>San Sebastián, tierra de telares</figcaption></figure>
-      <figure class="m5"><img src="img/mujeres-cafe.jpg" alt="Mujeres seleccionando café a mano" width="1400" height="1066" style="object-position:50% 40%"><figcaption>Concepción de Ataco</figcaption></figure>
-      <figure class="m6"><img src="img/pescador-eltunco.jpg" alt="Pescador salvadoreño lanzando su atarraya al atardecer en la playa El Tunco" width="1400" height="933" style="object-position:55% 62%"><figcaption>Playa El Tunco, La Libertad</figcaption></figure>
-      <div class="slogan"><p>“Nos inspiras a crecer juntos”</p></div>
-    </div>
+    <div class="slogan"><p>“Nos inspiras a crecer juntos”</p></div>
   </section>
 
   <!-- Clientes -->
@@ -529,8 +523,7 @@ footer .brand-name small{color:#9aa697}
           <li>Honestidad</li><li>Transparencia</li><li>Lealtad</li><li>Responsabilidad</li><li>Equidad</li><li>Eficiencia</li><li>Innovación</li>
         </ul>
       </div>
-      <div class="audience">
-        <img src="img/finca.jpg" alt="Productor salvadoreño en su finca" width="1400" height="934">
+      <div class="audience audience--text">
         <div>
           <span class="eyebrow">A quién servimos</span>
           <h3>Para quienes no han tenido acceso a la banca tradicional.</h3>
@@ -648,7 +641,7 @@ footer .brand-name small{color:#9aa697}
     </div>
     <div class="foot-legal">
       <span>© <span id="yr">2026</span> MI CRÉDITO S.C. DE R.L. DE C.V. Todos los derechos reservados.</span>
-      <span>micreditosc.com · Fotografías: Unsplash y Pexels.</span>
+      <span>micreditosc.com</span>
     </div>
   </div>
 </footer>
