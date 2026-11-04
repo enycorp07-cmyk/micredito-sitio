@@ -152,6 +152,20 @@ section{padding-block:clamp(64px,9vw,112px)}
 .savings{background:var(--mist)}
 .save-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
 .save-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column}
+.dpf-banner{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);background:var(--ink);color:#fff;border-radius:var(--r);overflow:hidden;margin-bottom:20px}
+.dpf-photo{margin:0;background:#2a2320}
+.dpf-photo img{width:100%;height:100%!important;object-fit:cover;object-position:50% 55%;display:block}
+.dpf-body .eyebrow{color:var(--leaf)}
+.dpf-body{padding:clamp(26px,4vw,48px);display:grid;gap:18px;align-content:center}
+.dpf-body h3{font-size:clamp(24px,2.6vw,34px);font-weight:800;color:#fff}
+.dpf-rate{display:flex;align-items:baseline;gap:10px;color:var(--leaf)}
+.dpf-rate strong{font:800 clamp(56px,7vw,88px)/.9 var(--display);letter-spacing:-.03em}
+.dpf-from,.dpf-unit{font:600 15px/1 var(--body);letter-spacing:.08em;text-transform:uppercase;color:#cfd8cc}
+.dpf-terms{display:flex;flex-wrap:wrap;gap:8px}
+.dpf-terms span{border:1.5px solid rgba(154,217,91,.55);color:#fff;border-radius:999px;padding:8px 16px;font-weight:600;font-size:15px;font-variant-numeric:tabular-nums}
+.dpf-note{color:#cfd8cc;font-size:15.5px;max-width:34em}
+.dpf-body .btn{justify-self:start}
+@media (max-width:800px){.dpf-banner{grid-template-columns:1fr}.dpf-photo img{height:auto!important}}
 .save-photos{display:grid}
 .save-photos img{width:100%;height:auto;display:block}
 .facts.facts-3{grid-template-columns:repeat(3,minmax(0,1fr))}
@@ -443,10 +457,22 @@ footer .brand-name small{color:#9aa697}
         <h2 id="ahorro-title">Haz crecer tu dinero con nosotros.</h2>
         <p>Dos formas de ahorrar: una para tener tu dinero disponible cuando lo necesites y otra para hacerlo rendir más a un plazo fijo.</p>
       </div>
+      <article class="dpf-banner" aria-labelledby="dpf-title">
+        <figure class="dpf-photo"><img src="img/alcancia-barro.jpg" alt="Alcancía de barro en forma de cerdito" width="1600" height="1067"></figure>
+        <div class="dpf-body">
+          <span class="eyebrow">Depósito a plazo fijo</span>
+          <h3 id="dpf-title">Pon a trabajar tu dinero con una tasa de alto rendimiento.</h3>
+          <div class="dpf-rate"><span class="dpf-from">Desde</span><strong>5%</strong><span class="dpf-unit">anual</span></div>
+          <div class="dpf-terms" role="list" aria-label="Plazos disponibles">
+            <span role="listitem">6 meses</span><span role="listitem">12 meses</span><span role="listitem">24 meses</span>
+          </div>
+          <p class="dpf-note">Apertura mínima de $500.00. Al vencimiento recibes tu capital o lo renuevas, como prefieras.</p>
+          <a class="btn btn-leaf" href="https://wa.me/50377245973?text=Hola%2C%20Mi%20Cr%C3%A9dito.%20Quiero%20informaci%C3%B3n%20sobre%20el%20dep%C3%B3sito%20a%20plazo%20fijo." target="_blank" rel="noopener">Solicitar información <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+      </article>
       <div class="save-grid">
         <article class="save-card">
           <div class="save-photos">
-            <img src="img/alcancia.jpg" alt="Alcancía en forma de cerdito con monedas" width="1400" height="916">
             <img src="img/cliente-tamales.jpg" alt="Clienta de Mi Crédito preparando tamales" width="896" height="1080">
           </div>
           <div class="save-body">
