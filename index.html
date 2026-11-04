@@ -91,11 +91,15 @@ nav.main a.cta:hover{background:var(--ink-2)}
 .hero .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:4px}
 .hero .actions .btn-ghost{color:#fff}
 .hero-photo{position:relative;min-height:420px}
-.hero-photo img{position:absolute;inset:0;width:100%;height:100%!important;object-fit:cover;object-position:30% 30%}
+.hero-photo{overflow:hidden;background:var(--ink)}
+.hero-photo::before{content:"";position:absolute;inset:-30px;background:var(--bg) center/cover no-repeat;filter:blur(22px) brightness(.55);transform:scale(1.05)}
+.hero-photo img{position:absolute;inset:0;width:100%;height:100%!important;object-fit:contain}
 .hero-photo figcaption{position:absolute;left:16px;bottom:16px;background:rgba(13,20,15,.78);color:#fff;font-size:13px;padding:7px 12px;border-radius:999px}
 @media (max-width:900px){
   .hero{grid-template-columns:1fr}
-  .hero-photo{order:-1;min-height:0;aspect-ratio:4/3;max-width:100%}
+  .hero-photo{order:-1;min-height:0;max-width:100%}
+  .hero-photo::before{display:none}
+  .hero-photo img{position:static;height:auto!important;object-fit:initial}
   .hero-copy{max-width:none;margin:0}
 }
 
@@ -121,7 +125,7 @@ section{padding-block:clamp(64px,9vw,112px)}
 /* Créditos */
 .credits-layout{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.5fr);gap:clamp(24px,4vw,48px);align-items:start}
 .credit-photo{position:sticky;top:96px;border-radius:var(--r);overflow:hidden;background:var(--mist)}
-.credit-photo img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.credit-photo img{width:100%;height:auto}
 .credit-photo figcaption{padding:12px 16px;font-size:14px;color:var(--muted)}
 .credit-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;border-top:1.5px solid var(--ink)}
 .credit{padding:24px 20px 26px 0;border-bottom:1px solid var(--line);display:grid;gap:8px;align-content:start}
@@ -136,7 +140,7 @@ section{padding-block:clamp(64px,9vw,112px)}
 @media (max-width:900px){
   .credits-layout{grid-template-columns:1fr}
   .credit-photo{position:static}
-  .credit-photo img{aspect-ratio:16/10}
+  .credit-photo img{height:auto}
 }
 @media (max-width:560px){
   .credit-list{grid-template-columns:1fr}
@@ -148,7 +152,12 @@ section{padding-block:clamp(64px,9vw,112px)}
 .savings{background:var(--mist)}
 .save-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
 .save-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column}
-.save-card img{width:100%;aspect-ratio:16/9;object-fit:cover}
+.save-photos{display:grid}
+.save-photos img{width:100%;height:auto;display:block}
+.facts.facts-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:480px){.facts-3 .fact dd{font-size:18px}.facts-3 .fact+.fact{padding-left:10px}}
+.facts-3 .fact dd{font-size:22px}
+.save-btn{justify-self:start}
 .save-body{padding:26px clamp(20px,3vw,32px) 30px;display:grid;gap:16px;flex:1}
 .save-body h3{font-size:clamp(24px,2.4vw,30px)}
 .save-body > p{color:var(--muted)}
@@ -193,8 +202,10 @@ section{padding-block:clamp(64px,9vw,112px)}
 .offer-list{display:grid;gap:clamp(18px,2.4vw,28px);list-style:none;margin:0;padding:0}
 .offer{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);background:var(--paper);border-radius:var(--r);overflow:hidden;border:1px solid var(--line)}
 .offer:nth-child(even) .offer-photo{order:2}
-.offer-photo{margin:0;min-height:320px;position:relative}
-.offer-photo img{position:absolute;inset:0;width:100%;height:100%!important;object-fit:cover}
+.offer-photo{margin:0;min-height:440px;position:relative;overflow:hidden;background:var(--ink)}
+.offer-photo::before{content:"";position:absolute;inset:-30px;background:var(--bg) center/cover no-repeat;filter:blur(20px) brightness(.6);transform:scale(1.05)}
+.offer-photo img{position:absolute;inset:0;width:100%;height:100%!important;object-fit:contain}
+.offer-tag{justify-self:start;background:var(--leaf-soft);color:var(--ink);font-weight:700;font-size:15px;padding:6px 14px;border-radius:999px}
 .offer-body{padding:clamp(24px,3.5vw,44px);display:grid;gap:14px;align-content:center}
 .offer-body h3{font-size:clamp(24px,2.6vw,34px);font-weight:800}
 .offer-body p{color:var(--muted);font-size:16.5px;max-width:34em}
@@ -202,7 +213,9 @@ section{padding-block:clamp(64px,9vw,112px)}
 @media (max-width:760px){
   .offer{grid-template-columns:1fr}
   .offer:nth-child(even) .offer-photo{order:0}
-  .offer-photo{min-height:0;aspect-ratio:4/3}
+  .offer-photo{min-height:0}
+  .offer-photo::before{display:none}
+  .offer-photo img{position:static;height:auto!important;object-fit:initial}
 }
 
 /* Nosotros */
@@ -335,14 +348,14 @@ footer .brand-name small{color:#9aa697}
     <div class="hero-copy on-dark">
       <span class="eyebrow">Ciudad El Triunfo · Usulután Norte</span>
       <h1 id="hero-title">Crédito y ahorro para la gente que <em>trabaja y hace crecer</em> El Salvador.</h1>
-      <p class="lead">Somos una institución de microfinanzas al servicio de comerciantes, productores y familias que la banca tradicional no ha tomado en cuenta. Le atendemos en persona y le respondemos rápido.</p>
+      <p class="lead">Somos una institución de microfinanzas al servicio de comerciantes, productores y familias que la banca tradicional no ha tomado en cuenta. Te atendemos en persona y te respondemos rápido.</p>
       <div class="actions">
         <a class="btn btn-leaf" href="#solicitud">Solicitar mi crédito <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-        <a class="btn btn-ghost" href="https://wa.me/50377245973" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg> Escríbanos</a>
+        <a class="btn btn-ghost" href="https://wa.me/50377245973" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg> Escríbenos</a>
       </div>
     </div>
-    <figure class="hero-photo" style="margin:0">
-      <img src="img/cliente-carreta-retrato.jpg" alt="Cliente de Mi Crédito junto a su yunta de bueyes y su carreta" width="896" height="1195" fetchpriority="high" style="object-position:50% 42%">
+    <figure class="hero-photo" style="margin:0;--bg:url(img/cliente-carreta-retrato.jpg)">
+      <img src="img/cliente-carreta-retrato.jpg" alt="Cliente de Mi Crédito junto a su yunta de bueyes y su carreta" width="896" height="1195" fetchpriority="high">
       <figcaption>Cliente de Mi Crédito</figcaption>
     </figure>
   </section>
@@ -352,15 +365,15 @@ footer .brand-name small{color:#9aa697}
     <div class="wrap">
       <div class="pillar">
         <svg viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="#0d140f" stroke-width="1.8" stroke-linecap="round"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 19a5.5 5.5 0 0 1 11 0"/><path d="M16 11.5l2 2 3.5-4"/></g></svg>
-        <div><h3>Atención personalizada</h3><p>Le conocemos por su nombre y entendemos su negocio antes de ofrecerle un producto.</p></div>
+        <div><h3>Atención personalizada</h3><p>Te conocemos por tu nombre y entendemos tu negocio antes de ofrecerte un producto.</p></div>
       </div>
       <div class="pillar">
         <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-clock" style="color:#0d140f"/></svg>
-        <div><h3>Respuesta rápida</h3><p>Trámites sencillos y una respuesta pronta para que su oportunidad no se pierda.</p></div>
+        <div><h3>Respuesta rápida</h3><p>Trámites sencillos y una respuesta pronta para que tu oportunidad no se pierda.</p></div>
       </div>
       <div class="pillar">
         <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-pin" style="color:#0d140f"/></svg>
-        <div><h3>Cerca de usted</h3><p>Desde Ciudad El Triunfo atendemos a clientes de Usulután y San Miguel.</p></div>
+        <div><h3>Cerca de ti</h3><p>Desde Ciudad El Triunfo atendemos a clientes de Usulután y San Miguel.</p></div>
       </div>
     </div>
   </div>
@@ -370,19 +383,19 @@ footer .brand-name small{color:#9aa697}
     <div class="wrap">
       <div class="sec-head">
         <span class="eyebrow">Créditos</span>
-        <h2 id="cred-title">Un crédito para cada etapa de su trabajo y su hogar.</h2>
-        <p>Siete líneas de crédito pensadas para el comercio, el campo y la familia. Un asesor le indica los requisitos y las condiciones de cada una.</p>
+        <h2 id="cred-title">Un crédito para cada etapa de tu trabajo y tu hogar.</h2>
+        <p>Siete líneas de crédito pensadas para el comercio, el campo y la familia. Un asesor te indica los requisitos y las condiciones de cada una.</p>
       </div>
       <div class="credits-layout">
         <figure class="credit-photo" style="margin:0">
-          <img src="img/cliente-barberia.jpg" alt="Cliente de Mi Crédito en su barbería" width="896" height="1195" style="object-position:50% 12%">
+          <img src="img/cliente-barberia.jpg" alt="Cliente de Mi Crédito en su barbería" width="896" height="1195">
           <figcaption>Cliente de Mi Crédito: su propia barbería</figcaption>
         </figure>
         <div class="credit-list">
           <article class="credit">
             <span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="#2f6a1c" stroke-width="1.8" stroke-linejoin="round"><path d="M4 9h16l-1.5 10h-13Z"/><path d="M8.5 9V7a3.5 3.5 0 0 1 7 0v2"/></g></svg></span>
             <h3>Comercio</h3>
-            <p>Capital de trabajo para surtir su tienda, puesto o negocio y vender más.</p>
+            <p>Capital de trabajo para surtir tu tienda, puesto o negocio y vender más.</p>
           </article>
           <article class="credit">
             <span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="#2f6a1c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20v-8"/><path d="M12 12c0-4 2.7-6.6 7-7-.2 4.3-3 7-7 7Z"/><path d="M12 15c0-3-2.1-5.2-5.5-5.5.2 3.4 2.3 5.5 5.5 5.5Z"/><path d="M5 20h14"/></g></svg></span>
@@ -392,7 +405,7 @@ footer .brand-name small{color:#9aa697}
           <article class="credit">
             <span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="#2f6a1c" stroke-width="1.8" stroke-linejoin="round"><path d="M4 11 12 4l8 7"/><path d="M6 10v10h12V10"/><path d="M10 20v-5h4v5"/></g></svg></span>
             <h3>Mejoramiento de vivienda</h3>
-            <p>Repare, amplíe o mejore su casa por etapas, a su ritmo.</p>
+            <p>Repara, amplía o mejora tu casa por etapas, a tu ritmo.</p>
           </article>
           <article class="credit">
             <span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="#2f6a1c" stroke-width="1.8" stroke-linejoin="round"><rect x="3" y="6" width="18" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/></g></svg></span>
@@ -413,7 +426,7 @@ footer .brand-name small{color:#9aa697}
             <span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="#0d140f" stroke-width="2" stroke-linecap="round"><circle cx="6" cy="12" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="18" cy="18" r="2"/><path d="M8 11l8-4M8 13l8 4"/></g></svg></span>
             <div>
               <h3>Microcrédito multidestino</h3>
-              <p>Montos pequeños para lo que usted necesite, con un trámite ágil.</p>
+              <p>Montos desde $100.00 para lo que necesites, con un trámite ágil.</p>
             </div>
             <a class="btn btn-leaf" href="#solicitud">Solicitar</a>
           </article>
@@ -427,38 +440,46 @@ footer .brand-name small{color:#9aa697}
     <div class="wrap">
       <div class="sec-head">
         <span class="eyebrow">Ahorro e inversión</span>
-        <h2 id="ahorro-title">Haga crecer su dinero con nosotros.</h2>
-        <p>Dos formas de ahorrar: una para tener su dinero disponible cuando lo necesite y otra para hacerlo rendir más a un plazo fijo.</p>
+        <h2 id="ahorro-title">Haz crecer tu dinero con nosotros.</h2>
+        <p>Dos formas de ahorrar: una para tener tu dinero disponible cuando lo necesites y otra para hacerlo rendir más a un plazo fijo.</p>
       </div>
       <div class="save-grid">
         <article class="save-card">
-          <img src="img/cliente-tamales.jpg" alt="Clienta de Mi Crédito preparando tamales" width="896" height="1080" style="object-position:50% 22%">
+          <div class="save-photos">
+            <img src="img/alcancia.jpg" alt="Alcancía en forma de cerdito con monedas" width="1400" height="916">
+            <img src="img/cliente-tamales.jpg" alt="Clienta de Mi Crédito preparando tamales" width="896" height="1080">
+          </div>
           <div class="save-body">
             <span class="eyebrow">Cuenta de ahorro a la vista</span>
-            <h3>Su dinero disponible cuando lo necesite.</h3>
-            <p>Ahorre poco a poco y retire en cualquier momento. Ideal para el fondo del negocio o los gastos de la familia.</p>
+            <h3>Tu dinero disponible cuando lo necesites.</h3>
+            <p>Ahorra poco a poco y retira en cualquier momento. Ideal para el fondo del negocio o los gastos de la familia.</p>
             <dl class="facts">
               <div class="fact"><dt>Apertura</dt><dd>$10.00</dd></div>
               <div class="fact"><dt>Disponibilidad</dt><dd>Inmediata<small>Liquidez en todo momento</small></dd></div>
             </dl>
+            <a class="btn btn-leaf save-btn" href="https://wa.me/50377245973?text=Hola%2C%20Mi%20Cr%C3%A9dito.%20Quiero%20informaci%C3%B3n%20sobre%20la%20cuenta%20de%20ahorro%20a%20la%20vista." target="_blank" rel="noopener">Solicitar información <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
           </div>
         </article>
         <article class="save-card">
-          <img src="img/cliente-ganadero.jpg" alt="Cliente ganadero de Mi Crédito con su vaca y su ternero" width="960" height="1280" style="object-position:50% 30%">
+          <div class="save-photos">
+            <img src="img/cliente-ganadero.jpg" alt="Cliente ganadero de Mi Crédito con su vaca y su ternero" width="960" height="1280">
+          </div>
           <div class="save-body">
             <span class="eyebrow">Depósito a plazo fijo</span>
-            <h3>Más rendimiento por su dinero.</h3>
-            <p>Su depósito gana una tasa de interés más alta que la que ofrecen otras financieras y bancos del mercado. Al vencimiento, recibe su capital o lo renueva de forma automática, como usted prefiera.</p>
-            <dl class="facts">
+            <h3>Más rendimiento para tu dinero.</h3>
+            <p>Tu depósito gana una tasa de interés de alto rendimiento, desde el 5% anual. Elige el plazo que más te convenga: 6, 12 o 24 meses. Al vencimiento, recibes tu capital o lo renuevas de forma automática, como prefieras.</p>
+            <dl class="facts facts-3">
               <div class="fact"><dt>Apertura mínima</dt><dd>$500.00</dd></div>
-              <div class="fact"><dt>Tasa</dt><dd>Preferencial<small>Consulte la tasa vigente</small></dd></div>
+              <div class="fact"><dt>Plazos</dt><dd>6, 12 y 24<small>meses</small></dd></div>
+              <div class="fact"><dt>Tasa</dt><dd>Desde 5%<small>anual</small></dd></div>
             </dl>
+            <a class="btn btn-leaf save-btn" href="https://wa.me/50377245973?text=Hola%2C%20Mi%20Cr%C3%A9dito.%20Quiero%20informaci%C3%B3n%20sobre%20el%20dep%C3%B3sito%20a%20plazo%20fijo." target="_blank" rel="noopener">Solicitar información <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
           </div>
         </article>
       </div>
       <div class="share-note">
         <div class="share-coin" aria-hidden="true">$1</div>
-        <p><strong>Requisito para ambas cuentas:</strong> pagar la suscripción de una acción preferente de $1.00. Con ella usted forma parte de Mi Crédito.</p>
+        <p><strong>Requisito para ambas cuentas:</strong> pagar la suscripción de una acción preferente de $1.00. Con ella formas parte de Mi Crédito.</p>
       </div>
     </div>
   </section>
@@ -484,90 +505,91 @@ footer .brand-name small{color:#9aa697}
       </div>
       <ul class="offer-list">
         <li class="offer">
-          <figure class="offer-photo"><img src="img/cliente-tienda.jpg" alt="Cliente de Mi Crédito" width="1200" height="800" loading="lazy" style="object-position:42% 50%"></figure>
+          <figure class="offer-photo" style="--bg:url(img/cliente-tienda.jpg)"><img src="img/cliente-tienda.jpg" alt="Cliente de Mi Crédito" width="1200" height="800" loading="lazy"></figure>
           <div class="offer-body">
             <h3>Crédito para comercio</h3>
-            <p>Capital de trabajo para surtir su negocio: compre más mercadería, amplíe su inventario y aproveche las temporadas de mayor venta.</p>
+            <p>Capital de trabajo para surtir tu negocio: compra más mercadería, amplía tu inventario y aprovecha las temporadas de mayor venta.</p>
             <a class="btn btn-leaf" href="https://wa.me/50377245973?text=Hola%2C%20Mi%20Cr%C3%A9dito.%20Quiero%20informaci%C3%B3n%20sobre%20el%20cr%C3%A9dito%20de%20comercio." target="_blank" rel="noopener">Solicitar información <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
           </div>
         </li>
         <li class="offer">
-          <figure class="offer-photo"><img src="img/cliente-milpa.jpg" alt="Cliente de Mi Crédito" width="800" height="1200" loading="lazy" style="object-position:50% 40%"></figure>
+          <figure class="offer-photo" style="--bg:url(img/cliente-milpa.jpg)"><img src="img/cliente-milpa.jpg" alt="Cliente de Mi Crédito" width="800" height="1200" loading="lazy"></figure>
           <div class="offer-body">
             <h3>Crédito agropecuario</h3>
-            <p>Financiamiento para la siembra y la cosecha: semillas, fertilizantes, insumos y el cuidado de su ganado, en los tiempos que el campo necesita.</p>
+            <p>Financiamiento para la siembra y la cosecha: semillas, fertilizantes, insumos y el cuidado de tu ganado, en los tiempos que el campo necesita.</p>
             <a class="btn btn-leaf" href="https://wa.me/50377245973?text=Hola%2C%20Mi%20Cr%C3%A9dito.%20Quiero%20informaci%C3%B3n%20sobre%20el%20cr%C3%A9dito%20de%20agropecuario." target="_blank" rel="noopener">Solicitar información <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
           </div>
         </li>
         <li class="offer">
-          <figure class="offer-photo"><img src="img/cliente-carpinteria.jpg" alt="Cliente de Mi Crédito" width="1200" height="1200" loading="lazy" style="object-position:50% 40%"></figure>
+          <figure class="offer-photo" style="--bg:url(img/cliente-carpinteria.jpg)"><img src="img/cliente-carpinteria.jpg" alt="Cliente de Mi Crédito" width="1200" height="1200" loading="lazy"></figure>
           <div class="offer-body">
             <h3>Crédito para industria</h3>
-            <p>Le ayudamos a equipar su taller: maquinaria, herramientas y materia prima para producir más y aceptar pedidos más grandes.</p>
+            <p>Te ayudamos a equipar tu taller: maquinaria, herramientas y materia prima para producir más y aceptar pedidos más grandes.</p>
             <a class="btn btn-leaf" href="https://wa.me/50377245973?text=Hola%2C%20Mi%20Cr%C3%A9dito.%20Quiero%20informaci%C3%B3n%20sobre%20el%20cr%C3%A9dito%20de%20industria." target="_blank" rel="noopener">Solicitar información <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
           </div>
         </li>
         <li class="offer">
-          <figure class="offer-photo"><img src="img/cliente-unas.jpg" alt="Cliente de Mi Crédito" width="1200" height="800" loading="lazy" style="object-position:40% 45%"></figure>
+          <figure class="offer-photo" style="--bg:url(img/cliente-unas.jpg)"><img src="img/cliente-unas.jpg" alt="Cliente de Mi Crédito" width="1200" height="800" loading="lazy"></figure>
           <div class="offer-body">
             <h3>Crédito para servicios</h3>
-            <p>Para quien atiende clientes todos los días: equipo, mobiliario y productos para mejorar su servicio y atender a más personas.</p>
+            <p>Para quien atiende clientes todos los días: equipo, mobiliario y productos para mejorar tu servicio y atender a más personas.</p>
             <a class="btn btn-leaf" href="https://wa.me/50377245973?text=Hola%2C%20Mi%20Cr%C3%A9dito.%20Quiero%20informaci%C3%B3n%20sobre%20el%20cr%C3%A9dito%20de%20servicios." target="_blank" rel="noopener">Solicitar información <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
           </div>
         </li>
         <li class="offer">
-          <figure class="offer-photo"><img src="img/cliente-mototaxi.jpg" alt="Cliente de Mi Crédito" width="800" height="1200" loading="lazy" style="object-position:50% 50%"></figure>
+          <figure class="offer-photo" style="--bg:url(img/cliente-mototaxi.jpg)"><img src="img/cliente-mototaxi.jpg" alt="Cliente de Mi Crédito" width="800" height="1200" loading="lazy"></figure>
           <div class="offer-body">
             <h3>Crédito para transporte</h3>
-            <p>Financiamiento para trabajar con su propio vehículo: compra, reparación, llantas y repuestos para no detener su trabajo.</p>
+            <p>Financiamiento para trabajar con tu propio vehículo: compra, reparación, llantas y repuestos para no detener tu trabajo.</p>
             <a class="btn btn-leaf" href="https://wa.me/50377245973?text=Hola%2C%20Mi%20Cr%C3%A9dito.%20Quiero%20informaci%C3%B3n%20sobre%20el%20cr%C3%A9dito%20de%20transporte." target="_blank" rel="noopener">Solicitar información <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
           </div>
         </li>
         <li class="offer">
-          <figure class="offer-photo"><img src="img/cliente-panaderia.jpg" alt="Cliente de Mi Crédito" width="800" height="1200" loading="lazy" style="object-position:50% 42%"></figure>
+          <figure class="offer-photo" style="--bg:url(img/cliente-panaderia.jpg)"><img src="img/cliente-panaderia.jpg" alt="Cliente de Mi Crédito" width="800" height="1200" loading="lazy"></figure>
           <div class="offer-body">
             <h3>Crédito para producción de alimentos</h3>
-            <p>Hornos, equipo e insumos para producir más cada día y llevar sus productos a más clientes.</p>
+            <p>Hornos, equipo e insumos para producir más cada día y llevar tus productos a más clientes.</p>
             <a class="btn btn-leaf" href="https://wa.me/50377245973?text=Hola%2C%20Mi%20Cr%C3%A9dito.%20Quiero%20informaci%C3%B3n%20sobre%20el%20cr%C3%A9dito%20de%20producci%C3%B3n%20de%20alimentos." target="_blank" rel="noopener">Solicitar información <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
           </div>
         </li>
         <li class="offer">
-          <figure class="offer-photo"><img src="img/cliente-costureria.jpg" alt="Cliente de Mi Crédito" width="1200" height="800" loading="lazy" style="object-position:72% 50%"></figure>
+          <figure class="offer-photo" style="--bg:url(img/cliente-costureria.jpg)"><img src="img/cliente-costureria.jpg" alt="Cliente de Mi Crédito" width="1200" height="800" loading="lazy"></figure>
           <div class="offer-body">
             <h3>Microcrédito multidestino</h3>
-            <p>Montos pequeños para lo que su negocio necesite: una máquina nueva, materiales o capital para un pedido especial, con un trámite ágil.</p>
+            <p class="offer-tag">Montos mínimos desde $100.00</p>
+            <p>Para lo que tu negocio necesite: una máquina nueva, materiales o capital para un pedido especial, con un trámite ágil.</p>
             <a class="btn btn-leaf" href="https://wa.me/50377245973?text=Hola%2C%20Mi%20Cr%C3%A9dito.%20Quiero%20informaci%C3%B3n%20sobre%20el%20cr%C3%A9dito%20de%20microcr%C3%A9dito%20multidestino." target="_blank" rel="noopener">Solicitar información <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
           </div>
         </li>
         <li class="offer">
-          <figure class="offer-photo"><img src="img/cliente-tortilleria.jpg" alt="Cliente de Mi Crédito" width="1200" height="800" loading="lazy" style="object-position:60% 50%"></figure>
+          <figure class="offer-photo" style="--bg:url(img/cliente-tortilleria.jpg)"><img src="img/cliente-tortilleria.jpg" alt="Cliente de Mi Crédito" width="1200" height="800" loading="lazy"></figure>
           <div class="offer-body">
             <h3>Capital de trabajo</h3>
-            <p>Compre sus insumos por mayor y mantenga su negocio abastecido. Le damos una respuesta rápida para que no pierda ventas.</p>
+            <p>El crédito que se ajusta a las necesidades de tu negocio: compra tus insumos por mayor y mantén tu negocio abastecido, permitiéndote incrementar tus ventas. Te damos una respuesta rápida para que no pierdas ventas.</p>
             <a class="btn btn-leaf" href="https://wa.me/50377245973?text=Hola%2C%20Mi%20Cr%C3%A9dito.%20Quiero%20informaci%C3%B3n%20sobre%20el%20cr%C3%A9dito%20de%20capital%20de%20trabajo." target="_blank" rel="noopener">Solicitar información <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
           </div>
         </li>
         <li class="offer">
-          <figure class="offer-photo"><img src="img/cliente-comida.jpg" alt="Cliente de Mi Crédito" width="800" height="1200" loading="lazy" style="object-position:50% 35%"></figure>
+          <figure class="offer-photo" style="--bg:url(img/cliente-comida.jpg)"><img src="img/cliente-comida.jpg" alt="Cliente de Mi Crédito" width="800" height="1200" loading="lazy"></figure>
           <div class="offer-body">
             <h3>Crédito para emprender</h3>
-            <p>¿Quiere iniciar o hacer crecer su negocio de comida? Financiamos equipo, refrigeración y lo necesario para abrir o ampliar su puesto.</p>
+            <p>¿Quieres iniciar o hacer crecer tu negocio? Financiamos capital de trabajo o inversión para lo que necesites, ya sea ampliar o abrir tu nuevo negocio.</p>
             <a class="btn btn-leaf" href="https://wa.me/50377245973?text=Hola%2C%20Mi%20Cr%C3%A9dito.%20Quiero%20informaci%C3%B3n%20sobre%20el%20cr%C3%A9dito%20de%20emprendimiento." target="_blank" rel="noopener">Solicitar información <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
           </div>
         </li>
         <li class="offer">
-          <figure class="offer-photo"><img src="img/cliente-electronica.jpg" alt="Cliente de Mi Crédito" width="1200" height="800" loading="lazy" style="object-position:55% 45%"></figure>
+          <figure class="offer-photo" style="--bg:url(img/cliente-electronica.jpg)"><img src="img/cliente-electronica.jpg" alt="Cliente de Mi Crédito" width="1200" height="800" loading="lazy"></figure>
           <div class="offer-body">
             <h3>Crédito para talleres</h3>
-            <p>Herramientas especializadas, repuestos y equipo para su taller de reparación, para que trabaje con mejor tecnología.</p>
+            <p>Financiamientos para la adquisición de herramienta especializada y/o equipo de última generación para que tu taller cuente con la mejor tecnología.</p>
             <a class="btn btn-leaf" href="https://wa.me/50377245973?text=Hola%2C%20Mi%20Cr%C3%A9dito.%20Quiero%20informaci%C3%B3n%20sobre%20el%20cr%C3%A9dito%20de%20talleres." target="_blank" rel="noopener">Solicitar información <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
           </div>
         </li>
         <li class="offer">
-          <figure class="offer-photo"><img src="img/cliente-venta.jpg" alt="Cliente de Mi Crédito" width="800" height="1200" loading="lazy" style="object-position:50% 26%"></figure>
+          <figure class="offer-photo" style="--bg:url(img/cliente-venta.jpg)"><img src="img/cliente-venta.jpg" alt="Cliente de Mi Crédito" width="800" height="1200" loading="lazy"></figure>
           <div class="offer-body">
             <h3>Crédito para comerciantes</h3>
-            <p>Para quienes venden en el mercado o en la calle: capital para su mercadería diaria, con atención personalizada y respuesta rápida.</p>
+            <p>A ti que deseas emprender tu propio negocio, en Mi Crédito encuentras la oportunidad de financiamiento para obtener capital.</p>
             <a class="btn btn-leaf" href="https://wa.me/50377245973?text=Hola%2C%20Mi%20Cr%C3%A9dito.%20Quiero%20informaci%C3%B3n%20sobre%20el%20cr%C3%A9dito%20de%20comerciantes." target="_blank" rel="noopener">Solicitar información <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
           </div>
         </li>
@@ -587,7 +609,7 @@ footer .brand-name small{color:#9aa697}
         <div class="mv">
           <span class="eyebrow">Misión</span>
           <h3>Impulsar el desarrollo de nuestras comunidades.</h3>
-          <p>Ser una institución financiera especializada en microcréditos, que impulse el desarrollo económico y social de sus clientes, empleados y comunidades rurales, a través de productos y servicios accesibles, confiables y orientados al bienestar colectivo.</p>
+          <p>Somos una institución financiera especializada en microcréditos, que impulsa el desarrollo económico y social de nuestros clientes, empleados y comunidades rurales, a través de productos y servicios accesibles, confiables y orientados al bienestar colectivo.</p>
         </div>
         <div class="mv">
           <span class="eyebrow">Visión</span>
@@ -605,7 +627,7 @@ footer .brand-name small{color:#9aa697}
         <div>
           <span class="eyebrow">A quién servimos</span>
           <h3>Para quienes no han tenido acceso a la banca tradicional.</h3>
-          <p>Atendemos principalmente a personas del sector informal: el vendedor del mercado, la señora que tiene su tienda, el productor que siembra su parcela. Le ayudamos a ordenar sus finanzas y a dar el siguiente paso.</p>
+          <p>Atendemos principalmente a personas del sector informal: el vendedor del mercado, la señora que tiene su tienda, el productor que siembra su parcela. Les ayudamos a ordenar sus finanzas y a dar el siguiente paso.</p>
         </div>
       </div>
     </div>
@@ -616,12 +638,12 @@ footer .brand-name small{color:#9aa697}
     <div class="wrap apply-grid">
       <div class="sec-head">
         <span class="eyebrow" style="color:#0d140f">Solicitud de crédito</span>
-        <h2 id="sol-title">Empiece su solicitud en un minuto.</h2>
-        <p>Complete sus datos y envíelos por WhatsApp. Un asesor le contactará para explicarle los requisitos y el siguiente paso.</p>
+        <h2 id="sol-title">Empieza tu solicitud en un minuto.</h2>
+        <p>Completa tus datos y envíalos por WhatsApp. Un asesor te contactará para explicarte los requisitos y el siguiente paso.</p>
         <ol class="steps">
-          <li>Complete el formulario.</li>
-          <li>Envíe el mensaje por WhatsApp.</li>
-          <li>Un asesor le responde y le orienta.</li>
+          <li>Completa el formulario.</li>
+          <li>Envía el mensaje por WhatsApp.</li>
+          <li>Un asesor te responde y te orienta.</li>
         </ol>
       </div>
       <form class="card" id="applyForm" novalidate>
@@ -632,21 +654,21 @@ footer .brand-name small{color:#9aa697}
         <div class="row">
           <label for="f-tipo">Tipo de crédito
             <select id="f-tipo" name="tipo" required>
-              <option value="">Seleccione…</option>
+              <option value="">Selecciona…</option>
               <option>Comercio</option><option>Agropecuario</option><option>Mejoramiento de vivienda</option><option>Consumo</option><option>Industria</option><option>Servicio</option><option>Microcrédito multidestino</option><option>Ahorro o depósito a plazo</option>
             </select>
           </label>
           <label for="f-monto">Monto aproximado (US$)<input id="f-monto" name="monto" inputmode="decimal" placeholder="Ej. 1,500"></label>
         </div>
         <label for="f-muni">Municipio donde vive<input id="f-muni" name="municipio" placeholder="Ej. Ciudad El Triunfo"></label>
-        <label for="f-msg">¿Para qué lo necesita? (opcional)<textarea id="f-msg" name="mensaje" placeholder="Cuéntenos brevemente"></textarea></label>
-        <p class="form-err" id="formErr" hidden>Escriba su nombre, su teléfono y el tipo de crédito para continuar.</p>
+        <label for="f-msg">¿Para qué lo necesitas? (opcional)<textarea id="f-msg" name="mensaje" placeholder="Cuéntanos brevemente"></textarea></label>
+        <p class="form-err" id="formErr" hidden>Escribe tu nombre, tu teléfono y el tipo de crédito para continuar.</p>
         <button class="btn btn-ink" type="submit"><svg aria-hidden="true"><use href="#i-wa"/></svg> Preparar mensaje de WhatsApp</button>
         <div class="wa-ready" id="waReady" hidden>
-          <p>Su mensaje está listo. Abra WhatsApp para enviarlo al 7724-5973.</p>
+          <p>Tu mensaje está listo. Abre WhatsApp para enviarlo al 7724-5973.</p>
           <a class="btn btn-leaf" id="waLink" href="https://wa.me/50377245973" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg> Abrir WhatsApp</a>
         </div>
-        <p class="form-note">Sus datos solo se usan para atender su solicitud. Enviar este mensaje no compromete su aprobación.</p>
+        <p class="form-note">Tus datos solo se usan para atender tu solicitud. Enviar este mensaje no compromete tu aprobación.</p>
       </form>
     </div>
   </section>
@@ -656,8 +678,8 @@ footer .brand-name small{color:#9aa697}
     <div class="wrap">
       <div class="sec-head">
         <span class="eyebrow">Contacto</span>
-        <h2 id="con-title">Visítenos o escríbanos.</h2>
-        <p>Con gusto le atendemos en nuestra oficina de Ciudad El Triunfo, por teléfono o por WhatsApp.</p>
+        <h2 id="con-title">Visítanos o escríbenos.</h2>
+        <p>Con gusto te atendemos en nuestra agencia en Ciudad El Triunfo, ubicada al costado norte del parque central, por teléfono o por WhatsApp.</p>
       </div>
       <div class="contact-grid">
         <dl class="channels">
