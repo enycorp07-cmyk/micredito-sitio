@@ -83,7 +83,7 @@ nav.main a.cta:hover{background:var(--ink-2)}
 }
 
 /* Héroe */
-.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);background:var(--ink);color:#fff}
+.hero{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);background:var(--ink);color:#fff}
 .hero-copy{padding:clamp(40px,7vw,96px) var(--gutter) clamp(40px,6vw,80px);display:flex;flex-direction:column;justify-content:center;gap:24px;max-width:640px;margin-left:auto;width:100%}
 .hero .hero-title{font-size:clamp(38px,5vw,68px);font-weight:800;line-height:1.05;letter-spacing:-.02em;text-wrap:balance;margin:0}
 .hero .hero-title em{font-style:normal;color:var(--leaf)}
@@ -99,11 +99,10 @@ nav.main a.cta:hover{background:var(--ink-2)}
 .hero .lead{margin:0;font-size:clamp(17px,1.5vw,20px);color:#d6ded3;max-width:34em}
 .hero .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:4px}
 .hero .actions .btn-ghost{color:#fff}
-.hero-photo{position:relative;min-height:460px;overflow:hidden;background:var(--ink)}
+.hero-photo{position:relative;min-height:clamp(540px,46vw,680px);overflow:hidden;background:var(--ink)}
 .hero-slide{position:absolute;inset:0;opacity:0;transition:opacity 1.1s ease}
 .hero-slide.is-active{opacity:1}
-.hero-slide::before{content:"";position:absolute;inset:-30px;background:var(--bg) center/cover no-repeat;filter:blur(22px) brightness(.55);transform:scale(1.05)}
-.hero-slide img{position:absolute;inset:0;width:100%;height:100%!important;object-fit:contain}
+.hero-slide img{position:absolute;inset:0;width:100%;height:100%!important;object-fit:cover;object-position:var(--pos,50% 50%);transform-origin:var(--pos,50% 50%)}
 .hero-slide.is-active img{animation:kenburns 7s ease-out both}
 @keyframes kenburns{from{transform:scale(1.04)}to{transform:scale(1)}}
 .hero-photo figcaption{position:absolute;left:16px;bottom:16px;background:rgba(13,20,15,.78);color:#fff;font-size:13px;padding:7px 12px;border-radius:999px}
@@ -162,17 +161,25 @@ section{padding-block:clamp(64px,9vw,112px)}
 .savings{background:var(--mist)}
 .save-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
 .save-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column}
-.dpf-photo{position:relative;overflow:hidden}
-.coin-drop{position:absolute;width:44px;height:220px;overflow:hidden;transform-origin:50% 100%;pointer-events:none;display:none}
-.coin-drop.is-ready{display:block}
-.coin{position:absolute;left:50%;bottom:0;width:30px;height:30px;margin-left:-15px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff3b0 0 12%,#f2c94c 30%,#c9971c 72%,#9a6f0c 100%);box-shadow:inset 0 0 0 2px rgba(255,236,160,.85),inset 0 0 0 4px rgba(150,105,10,.45),0 3px 6px rgba(0,0,0,.25);transform:translateY(-230px);opacity:0;animation:coindrop 4.2s cubic-bezier(.55,0,.75,.4) infinite}
+.dpf-photo{position:relative;overflow:hidden;margin:0;min-height:360px;display:grid;place-items:center;background:radial-gradient(120% 90% at 50% 35%,#ffffff 0,#fbf4f2 45%,#eef6e6 100%)}
+.piggy{position:relative;width:min(56%,310px);padding-top:120px}
+.piggy::after{content:"";position:absolute;left:14%;right:14%;bottom:-10px;height:22px;border-radius:50%;background:radial-gradient(closest-side,rgba(120,60,70,.22),rgba(120,60,70,0));animation:shadowpulse 1.4s ease-out 1.68s infinite}
+.piggy-img{display:block;width:100%;height:auto;transform-origin:50% 100%;animation:piggyjoy 1.4s ease-out 1.68s infinite;position:relative;z-index:1}
+.coin-drop{position:absolute;left:50%;top:0;width:44px;margin-left:-22px;height:calc(120px + 2.6%);overflow:hidden;pointer-events:none;z-index:2}
+.coin{position:absolute;left:50%;bottom:0;width:30px;height:30px;margin-left:-15px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff3b0 0 12%,#f2c94c 30%,#c9971c 72%,#9a6f0c 100%);box-shadow:inset 0 0 0 2px rgba(255,236,160,.85),0 2px 4px rgba(0,0,0,.18);opacity:0;animation:coindrop 4.2s cubic-bezier(.45,0,.75,.4) infinite}
+.coin::after{content:"$";position:absolute;inset:0;display:grid;place-items:center;font:800 16px/1 var(--display);color:#9a6f0c}
 .coin:nth-child(2){animation-delay:1.4s}
 .coin:nth-child(3){animation-delay:2.8s}
-@keyframes coindrop{0%{transform:translateY(-230px) rotate(0);opacity:0}8%{opacity:1}40%{transform:translateY(-6px) rotate(160deg);opacity:1}52%{transform:translateY(34px) rotate(200deg);opacity:1}53%,100%{transform:translateY(34px);opacity:0}}
-@media (prefers-reduced-motion:reduce){.coin-drop{display:none!important}}
+@keyframes coindrop{0%{transform:translateY(-130px) rotate(-20deg);opacity:0}8%{opacity:1}38%{transform:translateY(-4px) rotate(0);opacity:1}40%{transform:translateY(34px);opacity:1}41%,100%{transform:translateY(34px);opacity:0}}
+@keyframes piggyjoy{0%{transform:none}8%{transform:scale(1.05,.93)}20%{transform:scale(.97,1.05) translateY(-14px) rotate(-4deg)}32%{transform:scale(1.01,.99) translateY(0) rotate(3deg)}44%{transform:rotate(-1.5deg)}56%,100%{transform:none}}
+@keyframes shadowpulse{0%,100%{transform:none;opacity:1}20%{transform:scaleX(.85);opacity:.7}32%{transform:none;opacity:1}}
+.spark{position:absolute;width:24px;height:24px;filter:drop-shadow(0 0 4px rgba(242,201,76,.7));z-index:3;opacity:0;background:#f2c94c;clip-path:polygon(50% 0,61% 39%,100% 50%,61% 61%,50% 100%,39% 61%,0 50%,39% 39%);animation:sparkle 1.4s ease-out 1.68s infinite}
+.sp1{left:30%;top:calc(120px - 6px)}
+.sp2{left:64%;top:calc(120px - 18px);width:18px;height:18px;animation-delay:1.78s;background:var(--leaf)}
+.sp3{left:42%;top:calc(120px - 30px);width:14px;height:14px;animation-delay:1.86s}
+@keyframes sparkle{0%{opacity:0;transform:scale(.2) rotate(0)}12%{opacity:1;transform:scale(1.1) rotate(25deg)}36%{opacity:0;transform:scale(.6) translateY(-14px) rotate(60deg)}100%{opacity:0}}
+@media (prefers-reduced-motion:reduce){.coin-drop,.spark{display:none!important}.piggy-img,.piggy::after{animation:none}}
 .dpf-banner{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);background:var(--ink);color:#fff;border-radius:var(--r);overflow:hidden;margin-bottom:20px}
-.dpf-photo{margin:0;background:#2a2320}
-.dpf-photo img{width:100%;height:100%!important;object-fit:cover;object-position:50% 100%;display:block}
 .dpf-body .eyebrow{color:var(--leaf)}
 .dpf-body{padding:clamp(26px,4vw,48px);display:grid;gap:18px;align-content:center}
 .dpf-body h3{font-size:clamp(24px,2.6vw,34px);font-weight:800;color:#fff}
@@ -183,9 +190,9 @@ section{padding-block:clamp(64px,9vw,112px)}
 .dpf-terms span{border:1.5px solid rgba(154,217,91,.55);color:#fff;border-radius:999px;padding:8px 16px;font-weight:600;font-size:15px;font-variant-numeric:tabular-nums}
 .dpf-note{color:#cfd8cc;font-size:15.5px;max-width:34em}
 .dpf-body .btn{justify-self:start}
-@media (max-width:800px){.dpf-banner{grid-template-columns:1fr}.dpf-photo img{height:auto!important}}
+@media (max-width:800px){.dpf-banner{grid-template-columns:1fr}.dpf-photo{min-height:320px}.piggy{width:min(56%,240px);padding-top:100px}.coin-drop{height:calc(100px + 2.6%)}.sp1{top:94px}.sp2{top:82px}.sp3{top:70px}}
 .save-photos{display:grid}
-.save-photos img{width:100%;height:auto;display:block}
+.save-photos img{width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;display:block}
 .facts.facts-3{grid-template-columns:repeat(3,minmax(0,1fr))}
 @media (max-width:480px){.facts-3 .fact dd{font-size:18px}.facts-3 .fact+.fact{padding-left:10px}}
 .facts-3 .fact dd{font-size:22px}
@@ -234,9 +241,11 @@ section{padding-block:clamp(64px,9vw,112px)}
 .offer-list{display:grid;gap:clamp(18px,2.4vw,28px);list-style:none;margin:0;padding:0}
 .offer{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);background:var(--paper);border-radius:var(--r);overflow:hidden;border:1px solid var(--line)}
 .offer:nth-child(even) .offer-photo{order:2}
-.offer-photo{margin:0;min-height:440px;position:relative;overflow:hidden;background:var(--ink)}
-.offer-photo::before{content:"";position:absolute;inset:-30px;background:var(--bg) center/cover no-repeat;filter:blur(20px) brightness(.6);transform:scale(1.05)}
-.offer-photo img{position:absolute;inset:0;width:100%;height:100%!important;object-fit:contain}
+.offer.is-tall{grid-template-columns:minmax(0,.8fr) minmax(0,1fr)}
+.offer-photo{margin:0;position:relative;overflow:hidden;background:var(--mist);min-height:100%}
+.offer-photo img{display:block;width:100%;height:100%!important;aspect-ratio:4/3;object-fit:cover;object-position:var(--pos,50% 50%)}
+.offer.is-tall .offer-photo img{aspect-ratio:4/5}
+.offer.is-square .offer-photo img{aspect-ratio:1/1}
 .offer-tag{justify-self:start;background:var(--leaf-soft);color:var(--ink);font-weight:700;font-size:15px;padding:6px 14px;border-radius:999px}
 .offer-body{padding:clamp(24px,3.5vw,44px);display:grid;gap:14px;align-content:center}
 .offer-body h3{font-size:clamp(24px,2.6vw,34px);font-weight:800}
@@ -245,9 +254,8 @@ section{padding-block:clamp(64px,9vw,112px)}
 @media (max-width:760px){
   .offer{grid-template-columns:1fr}
   .offer:nth-child(even) .offer-photo{order:0}
-  .offer-photo{min-height:0}
-  .offer-photo::before{display:none}
-  .offer-photo img{position:static;height:auto!important;object-fit:initial}
+  .offer.is-tall{grid-template-columns:1fr}
+  .offer-photo img,.offer.is-tall .offer-photo img,.offer.is-square .offer-photo img{height:auto!important;aspect-ratio:auto}
 }
 
 /* Nosotros */
@@ -424,15 +432,35 @@ footer .brand-name small{color:#9aa697}
             <a class="btn btn-ghost" href="https://wa.me/50377245973" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg> Escríbenos</a>
           </div>
         </div>
+        <div class="hero-text" data-slide="5" aria-hidden="true">
+          <span class="eyebrow">Crédito para comerciantes</span>
+          <h2 class="hero-title">Capital para que <em>tu venta no pare</em>.</h2>
+          <p class="lead">Financiamiento para comprar tus insumos y vender más cada día.</p>
+          <div class="actions">
+            <a class="btn btn-leaf" href="https://wa.me/50377245973?text=Hola%2C%20Mi%20Cr%C3%A9dito.%20Quiero%20informaci%C3%B3n%20sobre%20el%20cr%C3%A9dito%20de%20comerciantes." target="_blank" rel="noopener">Solicitar información <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <a class="btn btn-ghost" href="https://wa.me/50377245973" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg> Escríbenos</a>
+          </div>
+        </div>
+        <div class="hero-text" data-slide="6" aria-hidden="true">
+          <span class="eyebrow">Capital de trabajo</span>
+          <h2 class="hero-title">Una respuesta rápida para que <em>no pierdas ventas</em>.</h2>
+          <p class="lead">Compra tus insumos por mayor y mantén tu negocio abastecido.</p>
+          <div class="actions">
+            <a class="btn btn-leaf" href="https://wa.me/50377245973?text=Hola%2C%20Mi%20Cr%C3%A9dito.%20Quiero%20informaci%C3%B3n%20sobre%20el%20cr%C3%A9dito%20de%20capital%20de%20trabajo." target="_blank" rel="noopener">Solicitar información <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <a class="btn btn-ghost" href="https://wa.me/50377245973" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg> Escríbenos</a>
+          </div>
+        </div>
       </div>
-      <div class="hero-dots" role="group" aria-label="Diapositivas"><button type="button" class="hero-dot is-active" data-go="0" aria-label="Ver diapositiva 1 de 5" aria-current="true"></button><button type="button" class="hero-dot" data-go="1" aria-label="Ver diapositiva 2 de 5"></button><button type="button" class="hero-dot" data-go="2" aria-label="Ver diapositiva 3 de 5"></button><button type="button" class="hero-dot" data-go="3" aria-label="Ver diapositiva 4 de 5"></button><button type="button" class="hero-dot" data-go="4" aria-label="Ver diapositiva 5 de 5"></button></div>
+      <div class="hero-dots" role="group" aria-label="Diapositivas"><button type="button" class="hero-dot is-active" data-go="0" aria-label="Ver diapositiva 1 de 7" aria-current="true"></button><button type="button" class="hero-dot" data-go="1" aria-label="Ver diapositiva 2 de 7"></button><button type="button" class="hero-dot" data-go="2" aria-label="Ver diapositiva 3 de 7"></button><button type="button" class="hero-dot" data-go="3" aria-label="Ver diapositiva 4 de 7"></button><button type="button" class="hero-dot" data-go="4" aria-label="Ver diapositiva 5 de 7"></button><button type="button" class="hero-dot" data-go="5" aria-label="Ver diapositiva 6 de 7"></button><button type="button" class="hero-dot" data-go="6" aria-label="Ver diapositiva 7 de 7"></button></div>
     </div>
     <figure class="hero-photo" style="margin:0">
-      <div class="hero-slide is-active" data-slide="0" style="--bg:url(img/cliente-carreta-retrato.jpg)"><img src="img/cliente-carreta-retrato.jpg" fetchpriority="high" alt="Cliente de Mi Crédito junto a su yunta de bueyes y su carreta" width="896" height="1195"></div>
-      <div class="hero-slide" data-slide="1" data-bg="img/cliente-milpa.jpg" aria-hidden="true"><img data-src="img/cliente-milpa.jpg" alt="Clienta de Mi Crédito en su milpa" width="800" height="1200"></div>
-      <div class="hero-slide" data-slide="2" data-bg="img/cliente-tienda.jpg" aria-hidden="true"><img data-src="img/cliente-tienda.jpg" alt="Clienta de Mi Crédito en su tienda" width="1200" height="800"></div>
-      <div class="hero-slide" data-slide="3" data-bg="img/cliente-costureria.jpg" aria-hidden="true"><img data-src="img/cliente-costureria.jpg" alt="Clienta de Mi Crédito en su taller de costura" width="1200" height="800"></div>
-      <div class="hero-slide" data-slide="4" data-bg="img/cliente-panaderia.jpg" aria-hidden="true"><img data-src="img/cliente-panaderia.jpg" alt="Cliente de Mi Crédito con pan recién horneado" width="800" height="1200"></div>
+      <div class="hero-slide is-active" data-slide="0" style="--pos:50% 62%"><img src="img/cliente-carreta-retrato.jpg" fetchpriority="high" alt="Cliente de Mi Crédito junto a su yunta de bueyes y su carreta" width="896" height="1195"></div>
+      <div class="hero-slide" data-slide="1" style="--pos:38% 68%" aria-hidden="true"><img data-src="img/cliente-milpa.jpg" alt="Clienta de Mi Crédito en su milpa" width="800" height="1200"></div>
+      <div class="hero-slide" data-slide="2" style="--pos:38% 50%" aria-hidden="true"><img data-src="img/cliente-tienda.jpg" alt="Clienta de Mi Crédito en su tienda" width="1200" height="800"></div>
+      <div class="hero-slide" data-slide="3" style="--pos:72% 50%" aria-hidden="true"><img data-src="img/cliente-costureria.jpg" alt="Clienta de Mi Crédito en su taller de costura" width="1200" height="800"></div>
+      <div class="hero-slide" data-slide="4" style="--pos:50% 42%" aria-hidden="true"><img data-src="img/cliente-panaderia.jpg" alt="Cliente de Mi Crédito con pan recién horneado" width="800" height="1200"></div>
+      <div class="hero-slide" data-slide="5" style="--pos:50% 50%" aria-hidden="true"><img data-src="img/cliente-tamales.jpg" alt="Clienta de Mi Crédito preparando tamales" width="896" height="1080"></div>
+      <div class="hero-slide" data-slide="6" style="--pos:50% 74%" aria-hidden="true"><img data-src="img/cliente-venta.jpg" alt="Clienta de Mi Crédito con su venta de elotes" width="800" height="1200"></div>
       <figcaption>Clientes de Mi Crédito</figcaption>
     </figure>
   </section>
@@ -521,7 +549,13 @@ footer .brand-name small{color:#9aa697}
         <p>Dos formas de ahorrar: una para tener tu dinero disponible cuando lo necesites y otra para hacerlo rendir más a un plazo fijo.</p>
       </div>
       <article class="dpf-banner" aria-labelledby="dpf-title">
-        <figure class="dpf-photo"><img src="img/alcancia-barro.jpg" alt="Alcancía de barro en forma de cerdito" width="1600" height="1427"><div class="coin-drop" aria-hidden="true"><span class="coin"></span><span class="coin"></span><span class="coin"></span></div></figure>
+        <figure class="dpf-photo">
+          <div class="piggy">
+            <div class="coin-drop" aria-hidden="true"><span class="coin"></span><span class="coin"></span><span class="coin"></span></div>
+            <img class="piggy-img" src="img/alcancia-rosa.webp" alt="Alcancía rosada en forma de cerdito" width="545" height="544" loading="lazy">
+            <span class="spark sp1" aria-hidden="true"></span><span class="spark sp2" aria-hidden="true"></span><span class="spark sp3" aria-hidden="true"></span>
+          </div>
+        </figure>
         <div class="dpf-body">
           <span class="eyebrow">Depósito a plazo fijo</span>
           <h3 id="dpf-title">Pon a trabajar tu dinero con una tasa de alto rendimiento.</h3>
@@ -536,7 +570,7 @@ footer .brand-name small{color:#9aa697}
       <div class="save-grid">
         <article class="save-card">
           <div class="save-photos">
-            <img src="img/cliente-tamales.jpg" alt="Clienta de Mi Crédito preparando tamales" width="896" height="1080">
+            <img src="img/ahorro-vista.jpg" alt="Mano guardando billetes en un frasco de ahorro" width="1200" height="800" loading="lazy">
           </div>
           <div class="save-body">
             <span class="eyebrow">Cuenta de ahorro a la vista</span>
@@ -551,7 +585,7 @@ footer .brand-name small{color:#9aa697}
         </article>
         <article class="save-card">
           <div class="save-photos">
-            <img src="img/cliente-ganadero.jpg" alt="Cliente ganadero de Mi Crédito con su vaca y su ternero" width="960" height="1280">
+            <img src="img/ahorro-plazo-fijo.jpg" alt="Planta que crece entre monedas apiladas" width="1200" height="800" loading="lazy">
           </div>
           <div class="save-body">
             <span class="eyebrow">Depósito a plazo fijo</span>
@@ -594,23 +628,23 @@ footer .brand-name small{color:#9aa697}
       </div>
       <ul class="offer-list">
         <li class="offer">
-          <figure class="offer-photo" style="--bg:url(img/cliente-tienda.jpg)"><img src="img/cliente-tienda.jpg" alt="Cliente de Mi Crédito" width="1200" height="800" loading="lazy"></figure>
+          <figure class="offer-photo" style="--pos:40% 50%"><img src="img/cliente-tienda.jpg" alt="Cliente de Mi Crédito" width="1200" height="800" loading="lazy"></figure>
           <div class="offer-body">
             <h3>Crédito para comercio</h3>
             <p>Capital de trabajo para surtir tu negocio: compra más mercadería, amplía tu inventario y aprovecha las temporadas de mayor venta.</p>
             <a class="btn btn-leaf" href="https://wa.me/50377245973?text=Hola%2C%20Mi%20Cr%C3%A9dito.%20Quiero%20informaci%C3%B3n%20sobre%20el%20cr%C3%A9dito%20de%20comercio." target="_blank" rel="noopener">Solicitar información <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
           </div>
         </li>
-        <li class="offer">
-          <figure class="offer-photo" style="--bg:url(img/cliente-milpa.jpg)"><img src="img/cliente-milpa.jpg" alt="Cliente de Mi Crédito" width="800" height="1200" loading="lazy"></figure>
+        <li class="offer is-tall">
+          <figure class="offer-photo" style="--pos:50% 55%"><img src="img/cliente-ganadero.jpg" alt="Cliente de Mi Crédito" width="960" height="1280" loading="lazy"></figure>
           <div class="offer-body">
             <h3>Crédito agropecuario</h3>
             <p>Financiamiento para la siembra y la cosecha: semillas, fertilizantes, insumos y el cuidado de tu ganado, en los tiempos que el campo necesita.</p>
             <a class="btn btn-leaf" href="https://wa.me/50377245973?text=Hola%2C%20Mi%20Cr%C3%A9dito.%20Quiero%20informaci%C3%B3n%20sobre%20el%20cr%C3%A9dito%20de%20agropecuario." target="_blank" rel="noopener">Solicitar información <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
           </div>
         </li>
-        <li class="offer">
-          <figure class="offer-photo" style="--bg:url(img/cliente-carpinteria.jpg)"><img src="img/cliente-carpinteria.jpg" alt="Cliente de Mi Crédito" width="1200" height="1200" loading="lazy"></figure>
+        <li class="offer is-square">
+          <figure class="offer-photo" style="--pos:50% 50%"><img src="img/cliente-carpinteria.jpg" alt="Cliente de Mi Crédito" width="1200" height="1200" loading="lazy"></figure>
           <div class="offer-body">
             <h3>Crédito para industria</h3>
             <p>Te ayudamos a equipar tu taller: maquinaria, herramientas y materia prima para producir más y aceptar pedidos más grandes.</p>
@@ -618,23 +652,23 @@ footer .brand-name small{color:#9aa697}
           </div>
         </li>
         <li class="offer">
-          <figure class="offer-photo" style="--bg:url(img/cliente-unas.jpg)"><img src="img/cliente-unas.jpg" alt="Cliente de Mi Crédito" width="1200" height="800" loading="lazy"></figure>
+          <figure class="offer-photo" style="--pos:45% 50%"><img src="img/cliente-unas.jpg" alt="Cliente de Mi Crédito" width="1200" height="800" loading="lazy"></figure>
           <div class="offer-body">
             <h3>Crédito para servicios</h3>
             <p>Para quien atiende clientes todos los días: equipo, mobiliario y productos para mejorar tu servicio y atender a más personas.</p>
             <a class="btn btn-leaf" href="https://wa.me/50377245973?text=Hola%2C%20Mi%20Cr%C3%A9dito.%20Quiero%20informaci%C3%B3n%20sobre%20el%20cr%C3%A9dito%20de%20servicios." target="_blank" rel="noopener">Solicitar información <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
           </div>
         </li>
-        <li class="offer">
-          <figure class="offer-photo" style="--bg:url(img/cliente-mototaxi.jpg)"><img src="img/cliente-mototaxi.jpg" alt="Cliente de Mi Crédito" width="800" height="1200" loading="lazy"></figure>
+        <li class="offer is-tall">
+          <figure class="offer-photo" style="--pos:50% 72%"><img src="img/cliente-mototaxi.jpg" alt="Cliente de Mi Crédito" width="800" height="1200" loading="lazy"></figure>
           <div class="offer-body">
             <h3>Crédito para transporte</h3>
             <p>Financiamiento para trabajar con tu propio vehículo: compra, reparación, llantas y repuestos para no detener tu trabajo.</p>
             <a class="btn btn-leaf" href="https://wa.me/50377245973?text=Hola%2C%20Mi%20Cr%C3%A9dito.%20Quiero%20informaci%C3%B3n%20sobre%20el%20cr%C3%A9dito%20de%20transporte." target="_blank" rel="noopener">Solicitar información <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
           </div>
         </li>
-        <li class="offer">
-          <figure class="offer-photo" style="--bg:url(img/cliente-panaderia.jpg)"><img src="img/cliente-panaderia.jpg" alt="Cliente de Mi Crédito" width="800" height="1200" loading="lazy"></figure>
+        <li class="offer is-tall">
+          <figure class="offer-photo" style="--pos:50% 42%"><img src="img/cliente-panaderia.jpg" alt="Cliente de Mi Crédito" width="800" height="1200" loading="lazy"></figure>
           <div class="offer-body">
             <h3>Crédito para producción de alimentos</h3>
             <p>Hornos, equipo e insumos para producir más cada día y llevar tus productos a más clientes.</p>
@@ -642,7 +676,7 @@ footer .brand-name small{color:#9aa697}
           </div>
         </li>
         <li class="offer">
-          <figure class="offer-photo" style="--bg:url(img/cliente-costureria.jpg)"><img src="img/cliente-costureria.jpg" alt="Cliente de Mi Crédito" width="1200" height="800" loading="lazy"></figure>
+          <figure class="offer-photo" style="--pos:70% 50%"><img src="img/cliente-costureria.jpg" alt="Cliente de Mi Crédito" width="1200" height="800" loading="lazy"></figure>
           <div class="offer-body">
             <h3>Microcrédito multidestino</h3>
             <p class="offer-tag">Montos mínimos desde $100.00</p>
@@ -651,15 +685,15 @@ footer .brand-name small{color:#9aa697}
           </div>
         </li>
         <li class="offer">
-          <figure class="offer-photo" style="--bg:url(img/cliente-tortilleria.jpg)"><img src="img/cliente-tortilleria.jpg" alt="Cliente de Mi Crédito" width="1200" height="800" loading="lazy"></figure>
+          <figure class="offer-photo" style="--pos:50% 50%"><img src="img/cliente-tortilleria.jpg" alt="Cliente de Mi Crédito" width="1200" height="800" loading="lazy"></figure>
           <div class="offer-body">
             <h3>Capital de trabajo</h3>
             <p>El crédito que se ajusta a las necesidades de tu negocio: compra tus insumos por mayor y mantén tu negocio abastecido, permitiéndote incrementar tus ventas. Te damos una respuesta rápida para que no pierdas ventas.</p>
             <a class="btn btn-leaf" href="https://wa.me/50377245973?text=Hola%2C%20Mi%20Cr%C3%A9dito.%20Quiero%20informaci%C3%B3n%20sobre%20el%20cr%C3%A9dito%20de%20capital%20de%20trabajo." target="_blank" rel="noopener">Solicitar información <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
           </div>
         </li>
-        <li class="offer">
-          <figure class="offer-photo" style="--bg:url(img/cliente-comida.jpg)"><img src="img/cliente-comida.jpg" alt="Cliente de Mi Crédito" width="800" height="1200" loading="lazy"></figure>
+        <li class="offer is-tall">
+          <figure class="offer-photo" style="--pos:50% 45%"><img src="img/cliente-comida.jpg" alt="Cliente de Mi Crédito" width="800" height="1200" loading="lazy"></figure>
           <div class="offer-body">
             <h3>Crédito para emprender</h3>
             <p>¿Quieres iniciar o hacer crecer tu negocio? Financiamos capital de trabajo o inversión para lo que necesites, ya sea ampliar o abrir tu nuevo negocio.</p>
@@ -667,15 +701,15 @@ footer .brand-name small{color:#9aa697}
           </div>
         </li>
         <li class="offer">
-          <figure class="offer-photo" style="--bg:url(img/cliente-electronica.jpg)"><img src="img/cliente-electronica.jpg" alt="Cliente de Mi Crédito" width="1200" height="800" loading="lazy"></figure>
+          <figure class="offer-photo" style="--pos:40% 50%"><img src="img/cliente-electronica.jpg" alt="Cliente de Mi Crédito" width="1200" height="800" loading="lazy"></figure>
           <div class="offer-body">
             <h3>Crédito para talleres</h3>
             <p>Financiamientos para la adquisición de herramienta especializada y/o equipo de última generación para que tu taller cuente con la mejor tecnología.</p>
             <a class="btn btn-leaf" href="https://wa.me/50377245973?text=Hola%2C%20Mi%20Cr%C3%A9dito.%20Quiero%20informaci%C3%B3n%20sobre%20el%20cr%C3%A9dito%20de%20talleres." target="_blank" rel="noopener">Solicitar información <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
           </div>
         </li>
-        <li class="offer">
-          <figure class="offer-photo" style="--bg:url(img/cliente-venta.jpg)"><img src="img/cliente-venta.jpg" alt="Cliente de Mi Crédito" width="800" height="1200" loading="lazy"></figure>
+        <li class="offer is-tall">
+          <figure class="offer-photo" style="--pos:50% 50%"><img src="img/cliente-tamales.jpg" alt="Cliente de Mi Crédito" width="896" height="1080" loading="lazy"></figure>
           <div class="offer-body">
             <h3>Crédito para comerciantes</h3>
             <p>A ti que deseas emprender tu propio negocio, en Mi Crédito encuentras la oportunidad de financiamiento para obtener capital.</p>
@@ -933,16 +967,6 @@ footer .brand-name small{color:#9aa697}
     window.addEventListener('load',function(){for(var k=1;k<n;k++)load(k);});
     schedule();
   }
-  /* Monedas que caen en la alcancía */
-  var fig=document.querySelector('.dpf-photo'), drop=fig&&fig.querySelector('.coin-drop'), pic=fig&&fig.querySelector('img');
-  function placeCoins(){
-    if(!drop||!pic.naturalWidth)return;
-    var W=fig.clientWidth,H=fig.clientHeight,iw=pic.naturalWidth,ih=pic.naturalHeight;
-    var sc=Math.max(W/iw,H/ih), dw=iw*sc, dh=ih*sc, ox=(W-dw)*0.5, oy=(H-dh);
-    var x=ox+dw*0.51, y=oy+dh*0.315;
-    drop.style.left=(x-22)+'px'; drop.style.top=(y-220)+'px'; drop.style.transform='rotate(-14deg)'; drop.classList.add('is-ready');
-  }
-  if(pic){ if(pic.complete){placeCoins();} else {pic.addEventListener('load',placeCoins);} window.addEventListener('resize',placeCoins); }
   /* Conteo de la tasa */
   var cu=document.querySelector('.count-up');
   if(cu&&!reduce&&'IntersectionObserver' in window){
