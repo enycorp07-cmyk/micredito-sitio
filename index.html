@@ -34,7 +34,7 @@
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+@media (prefers-reduced-motion:reduce){.hero-slide.is-active img{animation:none}.hero-dot.is-active::after{animation:none;transform:none}html{scroll-behavior:auto}*{transition:none!important}}
 body{background:var(--paper);color:var(--ink);font:400 17px/1.6 var(--body);margin:0;-webkit-font-smoothing:antialiased}
 img{max-width:100%;height:auto;display:block}
 [hidden]{display:none!important}
@@ -85,21 +85,31 @@ nav.main a.cta:hover{background:var(--ink-2)}
 /* Héroe */
 .hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);background:var(--ink);color:#fff}
 .hero-copy{padding:clamp(40px,7vw,96px) var(--gutter) clamp(40px,6vw,80px);display:flex;flex-direction:column;justify-content:center;gap:24px;max-width:640px;margin-left:auto;width:100%}
-.hero h1{font-size:clamp(40px,5.6vw,74px);font-weight:800}
-.hero h1 em{font-style:normal;color:var(--leaf)}
-.hero .lead{font-size:clamp(17px,1.5vw,20px);color:#d6ded3;max-width:34em}
+.hero .hero-title{font-size:clamp(38px,5vw,68px);font-weight:800;line-height:1.05;letter-spacing:-.02em;text-wrap:balance;margin:0}
+.hero .hero-title em{font-style:normal;color:var(--leaf)}
+.hero-texts{display:grid}
+.hero-text{grid-area:1/1;display:flex;flex-direction:column;justify-content:center;gap:24px;opacity:0;visibility:hidden;transform:translateY(10px);transition:opacity .7s ease,transform .7s ease,visibility 0s linear .7s}
+.hero-text.is-active{opacity:1;visibility:visible;transform:none;transition:opacity .7s ease .15s,transform .7s ease .15s,visibility 0s}
+.hero-dots{display:flex;gap:10px;margin-top:8px}
+.hero-dot{width:34px;height:6px;border-radius:999px;border:0;padding:0;background:rgba(255,255,255,.28);cursor:pointer;position:relative;overflow:hidden}
+.hero-dot.is-active{background:rgba(255,255,255,.28)}
+.hero-dot.is-active::after{content:"";position:absolute;inset:0;background:var(--leaf);transform-origin:left;animation:dotfill var(--dur,6s) linear forwards}
+.hero.is-paused .hero-dot.is-active::after{animation-play-state:paused}
+@keyframes dotfill{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.hero .lead{margin:0;font-size:clamp(17px,1.5vw,20px);color:#d6ded3;max-width:34em}
 .hero .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:4px}
 .hero .actions .btn-ghost{color:#fff}
-.hero-photo{position:relative;min-height:420px}
-.hero-photo{overflow:hidden;background:var(--ink)}
-.hero-photo::before{content:"";position:absolute;inset:-30px;background:var(--bg) center/cover no-repeat;filter:blur(22px) brightness(.55);transform:scale(1.05)}
-.hero-photo img{position:absolute;inset:0;width:100%;height:100%!important;object-fit:contain}
+.hero-photo{position:relative;min-height:460px;overflow:hidden;background:var(--ink)}
+.hero-slide{position:absolute;inset:0;opacity:0;transition:opacity 1.1s ease}
+.hero-slide.is-active{opacity:1}
+.hero-slide::before{content:"";position:absolute;inset:-30px;background:var(--bg) center/cover no-repeat;filter:blur(22px) brightness(.55);transform:scale(1.05)}
+.hero-slide img{position:absolute;inset:0;width:100%;height:100%!important;object-fit:contain}
+.hero-slide.is-active img{animation:kenburns 7s ease-out both}
+@keyframes kenburns{from{transform:scale(1.04)}to{transform:scale(1)}}
 .hero-photo figcaption{position:absolute;left:16px;bottom:16px;background:rgba(13,20,15,.78);color:#fff;font-size:13px;padding:7px 12px;border-radius:999px}
 @media (max-width:900px){
   .hero{grid-template-columns:1fr}
-  .hero-photo{order:-1;min-height:0;max-width:100%}
-  .hero-photo::before{display:none}
-  .hero-photo img{position:static;height:auto!important;object-fit:initial}
+  .hero-photo{order:-1;min-height:0;max-width:100%;aspect-ratio:4/5}
   .hero-copy{max-width:none;margin:0}
 }
 
@@ -152,9 +162,17 @@ section{padding-block:clamp(64px,9vw,112px)}
 .savings{background:var(--mist)}
 .save-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
 .save-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column}
-.dpf-banner{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);background:var(--ink);color:#fff;border-radius:var(--r);overflow:hidden;margin-bottom:20px}
+.dpf-photo{position:relative;overflow:hidden}
+.coin-drop{position:absolute;width:44px;height:220px;overflow:hidden;transform-origin:50% 100%;pointer-events:none;display:none}
+.coin-drop.is-ready{display:block}
+.coin{position:absolute;left:50%;bottom:0;width:30px;height:30px;margin-left:-15px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff3b0 0 12%,#f2c94c 30%,#c9971c 72%,#9a6f0c 100%);box-shadow:inset 0 0 0 2px rgba(255,236,160,.85),inset 0 0 0 4px rgba(150,105,10,.45),0 3px 6px rgba(0,0,0,.25);transform:translateY(-230px);opacity:0;animation:coindrop 4.2s cubic-bezier(.55,0,.75,.4) infinite}
+.coin:nth-child(2){animation-delay:1.4s}
+.coin:nth-child(3){animation-delay:2.8s}
+@keyframes coindrop{0%{transform:translateY(-230px) rotate(0);opacity:0}8%{opacity:1}40%{transform:translateY(-6px) rotate(160deg);opacity:1}52%{transform:translateY(34px) rotate(200deg);opacity:1}53%,100%{transform:translateY(34px);opacity:0}}
+@media (prefers-reduced-motion:reduce){.coin-drop{display:none!important}}
+.dpf-banner{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);background:var(--ink);color:#fff;border-radius:var(--r);overflow:hidden;margin-bottom:20px}
 .dpf-photo{margin:0;background:#2a2320}
-.dpf-photo img{width:100%;height:100%!important;object-fit:cover;object-position:50% 55%;display:block}
+.dpf-photo img{width:100%;height:100%!important;object-fit:cover;object-position:50% 100%;display:block}
 .dpf-body .eyebrow{color:var(--leaf)}
 .dpf-body{padding:clamp(26px,4vw,48px);display:grid;gap:18px;align-content:center}
 .dpf-body h3{font-size:clamp(24px,2.6vw,34px);font-weight:800;color:#fff}
@@ -358,19 +376,64 @@ footer .brand-name small{color:#9aa697}
 <main id="inicio">
 
   <!-- Héroe -->
-  <section class="hero" style="padding:0" aria-labelledby="hero-title">
+  <section class="hero" style="padding:0" aria-labelledby="hero-title" aria-roledescription="carrusel">
     <div class="hero-copy on-dark">
-      <span class="eyebrow">Ciudad El Triunfo · Usulután Norte</span>
-      <h1 id="hero-title">Crédito y ahorro para la gente que <em>trabaja y hace crecer</em> El Salvador.</h1>
-      <p class="lead">Somos una institución de microfinanzas al servicio de comerciantes, productores y familias que la banca tradicional no ha tomado en cuenta. Te atendemos en persona y te respondemos rápido.</p>
-      <div class="actions">
-        <a class="btn btn-leaf" href="#solicitud">Solicitar mi crédito <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-        <a class="btn btn-ghost" href="https://wa.me/50377245973" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg> Escríbenos</a>
+      <div class="hero-texts">
+        <div class="hero-text is-active" data-slide="0">
+          <span class="eyebrow">Ciudad El Triunfo · Usulután Norte</span>
+          <h1 id="hero-title" class="hero-title">Crédito y ahorro para la gente que <em>trabaja y hace crecer</em> El Salvador.</h1>
+          <p class="lead">Somos una institución de microfinanzas al servicio de comerciantes, productores y familias que la banca tradicional no ha tomado en cuenta. Te atendemos en persona y te respondemos rápido.</p>
+          <div class="actions">
+            <a class="btn btn-leaf" href="#solicitud">Solicitar mi crédito <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <a class="btn btn-ghost" href="https://wa.me/50377245973" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg> Escríbenos</a>
+          </div>
+        </div>
+        <div class="hero-text" data-slide="1" aria-hidden="true">
+          <span class="eyebrow">Crédito agropecuario</span>
+          <h2 class="hero-title">Impulsamos el <em>campo salvadoreño</em>.</h2>
+          <p class="lead">Financiamiento para la siembra, la cosecha y el cuidado de tu ganado, en los tiempos que el campo necesita.</p>
+          <div class="actions">
+            <a class="btn btn-leaf" href="https://wa.me/50377245973?text=Hola%2C%20Mi%20Cr%C3%A9dito.%20Quiero%20informaci%C3%B3n%20sobre%20el%20cr%C3%A9dito%20de%20agropecuario." target="_blank" rel="noopener">Solicitar información <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <a class="btn btn-ghost" href="https://wa.me/50377245973" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg> Escríbenos</a>
+          </div>
+        </div>
+        <div class="hero-text" data-slide="2" aria-hidden="true">
+          <span class="eyebrow">Crédito para comercio</span>
+          <h2 class="hero-title">Tu negocio, <em>siempre surtido</em>.</h2>
+          <p class="lead">Capital de trabajo para comprar más mercadería, ampliar tu inventario y vender más.</p>
+          <div class="actions">
+            <a class="btn btn-leaf" href="https://wa.me/50377245973?text=Hola%2C%20Mi%20Cr%C3%A9dito.%20Quiero%20informaci%C3%B3n%20sobre%20el%20cr%C3%A9dito%20de%20comercio." target="_blank" rel="noopener">Solicitar información <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <a class="btn btn-ghost" href="https://wa.me/50377245973" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg> Escríbenos</a>
+          </div>
+        </div>
+        <div class="hero-text" data-slide="3" aria-hidden="true">
+          <span class="eyebrow">Microcrédito multidestino</span>
+          <h2 class="hero-title">Desde <em>$100.00</em> para lo que tu negocio necesite.</h2>
+          <p class="lead">Una máquina nueva, materiales o capital para un pedido especial, con un trámite ágil.</p>
+          <div class="actions">
+            <a class="btn btn-leaf" href="https://wa.me/50377245973?text=Hola%2C%20Mi%20Cr%C3%A9dito.%20Quiero%20informaci%C3%B3n%20sobre%20el%20cr%C3%A9dito%20de%20microcr%C3%A9dito%20multidestino." target="_blank" rel="noopener">Solicitar información <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <a class="btn btn-ghost" href="https://wa.me/50377245973" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg> Escríbenos</a>
+          </div>
+        </div>
+        <div class="hero-text" data-slide="4" aria-hidden="true">
+          <span class="eyebrow">Crédito para emprender</span>
+          <h2 class="hero-title">Abre o amplía <em>tu propio negocio</em>.</h2>
+          <p class="lead">Financiamos capital de trabajo o inversión para lo que necesites.</p>
+          <div class="actions">
+            <a class="btn btn-leaf" href="https://wa.me/50377245973?text=Hola%2C%20Mi%20Cr%C3%A9dito.%20Quiero%20informaci%C3%B3n%20sobre%20el%20cr%C3%A9dito%20de%20emprendimiento." target="_blank" rel="noopener">Solicitar información <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <a class="btn btn-ghost" href="https://wa.me/50377245973" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg> Escríbenos</a>
+          </div>
+        </div>
       </div>
+      <div class="hero-dots" role="group" aria-label="Diapositivas"><button type="button" class="hero-dot is-active" data-go="0" aria-label="Ver diapositiva 1 de 5" aria-current="true"></button><button type="button" class="hero-dot" data-go="1" aria-label="Ver diapositiva 2 de 5"></button><button type="button" class="hero-dot" data-go="2" aria-label="Ver diapositiva 3 de 5"></button><button type="button" class="hero-dot" data-go="3" aria-label="Ver diapositiva 4 de 5"></button><button type="button" class="hero-dot" data-go="4" aria-label="Ver diapositiva 5 de 5"></button></div>
     </div>
-    <figure class="hero-photo" style="margin:0;--bg:url(img/cliente-carreta-retrato.jpg)">
-      <img src="img/cliente-carreta-retrato.jpg" alt="Cliente de Mi Crédito junto a su yunta de bueyes y su carreta" width="896" height="1195" fetchpriority="high">
-      <figcaption>Cliente de Mi Crédito</figcaption>
+    <figure class="hero-photo" style="margin:0">
+      <div class="hero-slide is-active" data-slide="0" style="--bg:url(img/cliente-carreta-retrato.jpg)"><img src="img/cliente-carreta-retrato.jpg" fetchpriority="high" alt="Cliente de Mi Crédito junto a su yunta de bueyes y su carreta" width="896" height="1195"></div>
+      <div class="hero-slide" data-slide="1" data-bg="img/cliente-milpa.jpg" aria-hidden="true"><img data-src="img/cliente-milpa.jpg" alt="Clienta de Mi Crédito en su milpa" width="800" height="1200"></div>
+      <div class="hero-slide" data-slide="2" data-bg="img/cliente-tienda.jpg" aria-hidden="true"><img data-src="img/cliente-tienda.jpg" alt="Clienta de Mi Crédito en su tienda" width="1200" height="800"></div>
+      <div class="hero-slide" data-slide="3" data-bg="img/cliente-costureria.jpg" aria-hidden="true"><img data-src="img/cliente-costureria.jpg" alt="Clienta de Mi Crédito en su taller de costura" width="1200" height="800"></div>
+      <div class="hero-slide" data-slide="4" data-bg="img/cliente-panaderia.jpg" aria-hidden="true"><img data-src="img/cliente-panaderia.jpg" alt="Cliente de Mi Crédito con pan recién horneado" width="800" height="1200"></div>
+      <figcaption>Clientes de Mi Crédito</figcaption>
     </figure>
   </section>
 
@@ -458,11 +521,11 @@ footer .brand-name small{color:#9aa697}
         <p>Dos formas de ahorrar: una para tener tu dinero disponible cuando lo necesites y otra para hacerlo rendir más a un plazo fijo.</p>
       </div>
       <article class="dpf-banner" aria-labelledby="dpf-title">
-        <figure class="dpf-photo"><img src="img/alcancia-barro.jpg" alt="Alcancía de barro en forma de cerdito" width="1600" height="1067"></figure>
+        <figure class="dpf-photo"><img src="img/alcancia-barro.jpg" alt="Alcancía de barro en forma de cerdito" width="1600" height="1427"><div class="coin-drop" aria-hidden="true"><span class="coin"></span><span class="coin"></span><span class="coin"></span></div></figure>
         <div class="dpf-body">
           <span class="eyebrow">Depósito a plazo fijo</span>
           <h3 id="dpf-title">Pon a trabajar tu dinero con una tasa de alto rendimiento.</h3>
-          <div class="dpf-rate"><span class="dpf-from">Desde</span><strong>5%</strong><span class="dpf-unit">anual</span></div>
+          <div class="dpf-rate"><span class="dpf-from">Desde</span><strong class="count-up" data-to="5">5%</strong><span class="dpf-unit">anual</span></div>
           <div class="dpf-terms" role="list" aria-label="Plazos disponibles">
             <span role="listitem">6 meses</span><span role="listitem">12 meses</span><span role="listitem">24 meses</span>
           </div>
@@ -843,6 +906,52 @@ footer .brand-name small{color:#9aa697}
   }
   draw(); window.addEventListener('resize',draw);
   if(document.fonts&&document.fonts.ready) document.fonts.ready.then(draw);
+})();
+</script>
+<script>
+(function(){
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  /* Carrusel del encabezado */
+  var hero=document.querySelector('.hero'); if(hero){
+    var texts=hero.querySelectorAll('.hero-text'), slides=hero.querySelectorAll('.hero-slide'), dots=hero.querySelectorAll('.hero-dot');
+    var n=slides.length, cur=0, DUR=6000, timer=null, paused=false;
+    hero.style.setProperty('--dur',DUR+'ms');
+    function load(i){var sl=slides[i]; if(!sl)return; var im=sl.querySelector('img'); if(im&&im.dataset.src){im.src=im.dataset.src; im.removeAttribute('data-src');} if(sl.dataset.bg){sl.style.setProperty('--bg','url('+sl.dataset.bg+')'); sl.removeAttribute('data-bg');}}
+    function show(i){
+      i=(i+n)%n; if(i===cur)return; load(i); load((i+1)%n);
+      [texts,slides].forEach(function(list){list[cur].classList.remove('is-active');list[cur].setAttribute('aria-hidden','true');list[i].classList.add('is-active');list[i].removeAttribute('aria-hidden');});
+      dots[cur].classList.remove('is-active');dots[cur].removeAttribute('aria-current');
+      void dots[i].offsetWidth; dots[i].classList.add('is-active');dots[i].setAttribute('aria-current','true');
+      cur=i; schedule();
+    }
+    function schedule(){clearTimeout(timer); if(reduce||paused||document.hidden)return; timer=setTimeout(function(){show(cur+1);},DUR);}
+    function pause(v){paused=v; hero.classList.toggle('is-paused',v); if(v){clearTimeout(timer);} else {var d=dots[cur]; d.classList.remove('is-active'); void d.offsetWidth; d.classList.add('is-active'); schedule();}}
+    dots.forEach(function(d){d.addEventListener('click',function(){show(+d.dataset.go);});});
+    hero.addEventListener('mouseenter',function(){pause(true);}); hero.addEventListener('mouseleave',function(){pause(false);});
+    hero.addEventListener('focusin',function(){pause(true);}); hero.addEventListener('focusout',function(){pause(false);});
+    document.addEventListener('visibilitychange',schedule);
+    window.addEventListener('load',function(){for(var k=1;k<n;k++)load(k);});
+    schedule();
+  }
+  /* Monedas que caen en la alcancía */
+  var fig=document.querySelector('.dpf-photo'), drop=fig&&fig.querySelector('.coin-drop'), pic=fig&&fig.querySelector('img');
+  function placeCoins(){
+    if(!drop||!pic.naturalWidth)return;
+    var W=fig.clientWidth,H=fig.clientHeight,iw=pic.naturalWidth,ih=pic.naturalHeight;
+    var sc=Math.max(W/iw,H/ih), dw=iw*sc, dh=ih*sc, ox=(W-dw)*0.5, oy=(H-dh);
+    var x=ox+dw*0.51, y=oy+dh*0.315;
+    drop.style.left=(x-22)+'px'; drop.style.top=(y-220)+'px'; drop.style.transform='rotate(-14deg)'; drop.classList.add('is-ready');
+  }
+  if(pic){ if(pic.complete){placeCoins();} else {pic.addEventListener('load',placeCoins);} window.addEventListener('resize',placeCoins); }
+  /* Conteo de la tasa */
+  var cu=document.querySelector('.count-up');
+  if(cu&&!reduce&&'IntersectionObserver' in window){
+    var to=+cu.dataset.to, done=false;
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){ if(e.isIntersecting&&!done){done=true; io.disconnect(); var t0=null; cu.textContent='0%';
+      var step=function(ts){if(!t0)t0=ts; var k=Math.min(1,(ts-t0)/1400); var e2=1-Math.pow(1-k,3); cu.textContent=(k<1?(to*e2).toFixed(1):to)+'%'; if(k<1)requestAnimationFrame(step);};
+      requestAnimationFrame(step);} });},{threshold:.6});
+    io.observe(cu);
+  }
 })();
 </script>
 </body></html>
