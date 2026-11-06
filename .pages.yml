@@ -1,0 +1,55 @@
+# Editor de contenido (Pages CMS) — https://app.pagescms.org
+media:
+  input: img/eventos
+  output: /img/eventos
+  categories: [image]
+
+content:
+  - name: eventos
+    label: Eventos
+    type: file
+    path: data/eventos.json
+    format: json
+    list: true
+    fields:
+      - name: titulo
+        label: Título del evento
+        type: string
+        required: true
+        description: "Ejemplo: Feria agropecuaria de Ciudad El Triunfo"
+      - name: fecha
+        label: Fecha
+        type: date
+        format: yyyy-MM-dd
+        required: true
+        description: Los eventos con fecha de hoy en adelante aparecen en "Próximos eventos"; los demás, en "Eventos anteriores".
+      - name: hora
+        label: Hora (opcional)
+        type: string
+        description: "Ejemplo: 9:00 a. m."
+      - name: lugar
+        label: Lugar
+        type: string
+        description: "Ejemplo: Parque central de Ciudad El Triunfo"
+      - name: tipo
+        label: Tipo de participación
+        type: select
+        values: ["Organizado por Mi Crédito", "Participamos"]
+      - name: foto
+        label: Foto principal
+        type: image
+        description: Foto horizontal, de preferencia. Se muestra en la tarjeta del evento.
+      - name: galeria
+        label: Más fotos (opcional)
+        type: image
+        multiple:
+          max: 12
+      - name: descripcion
+        label: Descripción
+        type: text
+        description: Unas pocas líneas sobre el evento. Deja una línea en blanco para separar párrafos.
+      - name: publicado
+        label: Publicado en el sitio
+        type: boolean
+        default: true
+        description: Desactívalo para ocultar el evento sin borrarlo.
